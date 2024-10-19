@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth";
+import { toast } from "sonner";
 
 export default function useApp() {
 	const { signIn } = useContext(AuthContext);
@@ -22,7 +23,7 @@ export default function useApp() {
 			capturedDataLogin.email === "" ||
 			capturedDataLogin.password === ""
 		) {
-			alert("Preencha todos os campos");
+			toast.error("Preencha todos os campos para continuar");
 			return;
 		}
 		signIn(capturedDataLogin);

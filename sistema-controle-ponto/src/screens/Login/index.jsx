@@ -38,7 +38,7 @@ export default function Login() {
 						/>
 					</div>
 					<div className="forgotPassword">
-						<a href="#">Esqueci minha senha</a>
+						<a href="#">Esqueceu a senha?</a>
 					</div>
 					<button onClick={() => handlerLogin()}>Entrar</button>
 				</div>

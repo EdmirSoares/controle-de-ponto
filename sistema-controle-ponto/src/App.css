@@ -13,9 +13,10 @@
 	--text-color-dark: #2c2c2e;
 	--text-color-gray: #949494;
 	--link-text-color: #605bff;
-	--button-background-color: #1a1a1a;
-	--button-hover-border-color: #646cff;
+	--button-background-color: #242424;
+	--button-background-color-secondary: #ffffff;
 	--button-text-color: #fff;
+	--button-text-color-secondary: #242424;
 
 	--input-color: #f7f7f8;
 
@@ -93,4 +94,18 @@ body,
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
+}
+
+.custom-toaster button {
+	background-color: var(--button-background-color-secondary);
+	color: var(--button-text-color-secondary);
+	border: none;
+	border-radius: 999;
+	padding: 0 !important;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.custom-toaster button:hover {
+	background-color: #ededed !important;
 }
