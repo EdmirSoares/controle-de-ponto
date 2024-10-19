@@ -30,6 +30,7 @@ function AuthProvider({ children }) {
 		try {
 			//const response = await postLogin();
 			setLocalStorage(dataUser);
+			setUser(dataUser);
 		} catch (error) {
 			setIsLogged(false);
 			setLoadingSign(false);

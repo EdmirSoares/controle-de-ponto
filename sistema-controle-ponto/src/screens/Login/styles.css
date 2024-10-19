@@ -28,10 +28,13 @@
 	gap: 1rem;
 }
 
-.subTitleText {
+.subTitleTextContainer {
 	width: 80%;
 }
 
+.labelnput {
+	align-self: flex-start;
+}
 .inputContainer {
 	display: flex;
 	width: 456px;
@@ -39,6 +42,32 @@
 	justify-content: center;
 	align-items: flex-end;
 	gap: 26px;
+}
+
+.inputContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.forgotPassword {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+.forgotPassword a {
+	color: var(--link-text-color);
+	font-family: var(--font-family);
+	font-weight: 700;
+	font-size: 0.8em;
+}
+
+.forgotPassword a:hover {
+	text-decoration: underline;
 }
 
 .rightContainer {
@@ -51,24 +80,10 @@
 
 input {
 	padding: 0.5rem;
-	border: 1px solid #ccc;
 	border-radius: 4px;
-}
-
-button {
-	border-radius: 8px;
-	border: 1px solid transparent;
-	padding: 0.6em 1.2em;
-	font-size: 1em;
-	font-weight: 500;
-	font-family: inherit;
-	background-color: #1a1a1a;
-	cursor: pointer;
-	transition: border-color 0.25s;
-}
-
-button:hover {
-	border-color: #646cff;
+	width: 100%;
+	height: 50px;
+	padding: 0 1rem;
 }
 
 h1 {
@@ -82,8 +97,29 @@ p {
 	font-weight: 700;
 }
 
-input {
-	width: 100%;
-	height: 50px;
-	padding: 0 1rem;
+@media screen and (max-width: 1366px) {
+	.leftContainer {
+		max-width: 50vw;
+	}
+	.rightContainer {
+		max-width: 50%;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.leftContainer {
+		max-width: 100vw;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.containerLogin {
+		flex-direction: column;
+	}
+	.leftContainer {
+		max-width: 100vw;
+	}
+	.rightContainer {
+		display: none;
+	}
 }

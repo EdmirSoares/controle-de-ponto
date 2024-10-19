@@ -10,8 +10,9 @@
 	--background-color: #242424;
 	--light-background-color: #ffffff;
 	--text-color: rgba(255, 255, 255, 0.87);
-	--text-color-dark: #1c1c1c;
+	--text-color-dark: #2c2c2e;
 	--text-color-gray: #949494;
+	--link-text-color: #605bff;
 	--button-background-color: #1a1a1a;
 	--button-hover-border-color: #646cff;
 	--button-text-color: #fff;
@@ -47,6 +48,32 @@ input {
 	background-color: var(--input-color);
 	border: 0 !important;
 	border-radius: 10px !important;
+	color: var(--text-color-gray);
+	font-family: var(--font-family);
+	font-weight: 600;
+}
+
+label {
+	color: var(--text-color-dark);
+	font-family: var(--font-family);
+	font-weight: 700;
+}
+
+button {
+	border-radius: 8px;
+	padding: 0.6em 3.6em !important;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: var(--font-family) !important;
+	background-color: var(--button-background-color);
+	cursor: pointer;
+	transition: border-color 0.25s;
+	color: var(--button-text-color);
+}
+
+button:hover {
+	background-color: #414144;
+	transition: background-color 0.5s;
 }
 
 #root {

@@ -1,12 +1,15 @@
 import "./styles.css";
+import useApp from "./useApp";
 
 export default function Login() {
+	const { capturedDataLogin, handleInputChange, handlerLogin } = useApp();
+
 	return (
 		<div className="containerLogin">
 			<div className="leftContainer">
 				<div className="headerContainer">
 					<h1>Olá!</h1>
-					<div className="subTitleText">
+					<div className="subTitleTextContainer">
 						<p>
 							Faça login para registrar seu ponto ou acompanhar
 							suas solicitações
@@ -14,13 +17,30 @@ export default function Login() {
 					</div>
 				</div>
 				<div className="inputContainer">
-					<input
-						className="inputLogin"
-						type="text"
-						placeholder="Email"
-					/>
-					<input type="password" placeholder="Password" />
-					<button>Login</button>
+					<div className="inputContent">
+						<label className="labelnput">Email</label>
+						<input
+							type="text"
+							name="email"
+							placeholder="Email"
+							value={capturedDataLogin.email}
+							onChange={(e) => handleInputChange(e)}
+						/>
+					</div>
+					<div className="inputContent">
+						<label className="labelnput">Senha</label>
+						<input
+							type="password"
+							name="password"
+							placeholder="Senha"
+							value={capturedDataLogin.password}
+							onChange={(e) => handleInputChange(e)}
+						/>
+					</div>
+					<div className="forgotPassword">
+						<a href="#">Esqueci minha senha</a>
+					</div>
+					<button onClick={() => handlerLogin()}>Entrar</button>
 				</div>
 			</div>
 			<div className="rightContainer"></div>
