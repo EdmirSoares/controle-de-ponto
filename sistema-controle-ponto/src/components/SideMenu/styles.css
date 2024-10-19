@@ -4,7 +4,7 @@
 	justify-content: flex-start;
 	height: 100%;
 	width: 18%;
-	padding: 40px 62px 0px 32px;
+	padding: 40px;
 	gap: 4.25rem;
 }
 .headerContainer {
@@ -42,6 +42,27 @@
 	color: var(--text-color);
 	font-size: 1.1rem;
 	cursor: pointer;
+}
+
+.textNavigation:hover {
+	color: var(--hover-color);
+}
+
+.menuItem {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 12px;
+}
+
+.menuItem:hover {
+	background-color: var(--background-hover-color);
+	color: var(--text-color);
+	border-radius: 4px;
+	padding: 2px 12px;
+	transition: background-color 0.5s;
+	transition: color 0.5s;
+	transition: padding 0.25s;
 }
 
 h1 {

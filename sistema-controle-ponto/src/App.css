@@ -18,6 +18,8 @@
 	--button-text-color: #fff;
 	--button-text-color-secondary: #242424;
 
+	--background-hover-color: #414144;
+
 	--input-color: #f7f7f8;
 
 	--font-family: "Nunito", system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -73,7 +75,7 @@ button {
 }
 
 button:hover {
-	background-color: #414144;
+	background-color: var(--background-hover-color);
 	transition: background-color 0.5s;
 }
 

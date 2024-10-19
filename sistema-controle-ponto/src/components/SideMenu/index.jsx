@@ -18,19 +18,19 @@ export default function SideMenu() {
 			</div>
 			<div className="navigationContainer">
 				<div
-					className="menu-item"
+					className="menuItem"
 					onClick={() => handleNavigation("/dashboard-funcionario")}
 				>
 					<p className="textNavigation">Dashboard</p>
 				</div>
 				<div
-					className="menu-item"
+					className="menuItem"
 					onClick={() => handleNavigation("/registros")}
 				>
 					<p className="textNavigation">Registros</p>
 				</div>
 				<div
-					className="menu-item"
+					className="menuItem"
 					onClick={() => handleNavigation("/solicitacoes")}
 				>
 					<p className="textNavigation">Solicitações</p>
