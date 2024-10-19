@@ -42,10 +42,12 @@
 	color: var(--text-color);
 	font-size: 1.1rem;
 	cursor: pointer;
+	opacity: 0.5;
 }
 
 .textNavigation:hover {
-	color: var(--hover-color);
+	color: var(--text-color);
+	opacity: 1;
 }
 
 .menuItem {
@@ -63,6 +65,11 @@
 	transition: background-color 0.5s;
 	transition: color 0.5s;
 	transition: padding 0.25s;
+}
+
+.activeScreen {
+	color: var(--text-color);
+	opacity: 1;
 }
 
 h1 {

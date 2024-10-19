@@ -21,7 +21,12 @@ export default function SideMenu() {
 					className="menuItem"
 					onClick={() => handleNavigation("/dashboard-funcionario")}
 				>
-					<p className="textNavigation">Dashboard</p>
+					<p
+						className="textNavigation"
+						data-screen="/dashboard-funcionario"
+					>
+						Dashboard
+					</p>
 				</div>
 				<div
 					className="menuItem"

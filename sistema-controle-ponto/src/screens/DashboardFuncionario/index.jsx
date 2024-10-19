@@ -5,14 +5,11 @@ export default function DashboardFuncionario() {
 	return (
 		<div className="container">
 			<SideMenu />
-			<div
-				style={{
-					height: "100%",
-					width: "100%",
-					borderRadius: "20px 0px 0px 20px",
-					backgroundColor: "#ffffff",
-				}}
-			></div>
+			<div className="rightContainer">
+				<div className="headerContainer">
+					<h1>Dashboard</h1>
+				</div>
+			</div>
 		</div>
 	);
 }

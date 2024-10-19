@@ -15,7 +15,21 @@ export default function useApp() {
 
 	useEffect(() => {
 		setActiveScreen(location.pathname);
-	}, [location]);
+		const activeScreenElement = document.querySelector(
+			"[data-active-screen]"
+		);
+		if (activeScreenElement) {
+			activeScreenElement.classList.remove("activeScreen");
+			activeScreenElement.removeAttribute("data-active-screen");
+		}
+		const newActiveScreenElement = document.querySelector(
+			`[data-screen="${activeScreen}"]`
+		);
+		if (newActiveScreenElement) {
+			newActiveScreenElement.classList.add("activeScreen");
+			newActiveScreenElement.setAttribute("data-active-screen", "");
+		}
+	}, [location, activeScreen]);
 
 	return { handleNavigation, activeScreen };
 }
