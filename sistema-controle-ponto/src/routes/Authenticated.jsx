@@ -1,7 +1,14 @@
+import { Route, Routes } from "react-router-dom";
+import DashboardFuncionario from "../screens/DashboardFuncionario";
+
 export default function Authenticated() {
 	return (
-		<div>
-			<h1 style={{ color: "#fff" }}>Authenticated</h1>
-		</div>
+		<Routes>
+			<Route path="*" element={<DashboardFuncionario />} />
+			<Route
+				path="/dashboard-funcionario"
+				element={<DashboardFuncionario />}
+			/>
+		</Routes>
 	);
 }

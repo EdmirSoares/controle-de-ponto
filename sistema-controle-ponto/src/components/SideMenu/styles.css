@@ -1,0 +1,51 @@
+.containerSideMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	height: 100%;
+	width: 18%;
+	padding: 40px 62px 0px 32px;
+	gap: 4.25rem;
+}
+.headerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.imageContainer {
+	display: flex;
+	width: 20%;
+	resize: contain;
+	border-radius: 12px;
+}
+
+.navigationContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 32px;
+}
+
+.footerContainer {
+	display: flex;
+	margin-top: auto;
+	flex-direction: row;
+	gap: 12px;
+	align-items: center;
+	height: 5%;
+	width: 100%;
+	color: var(--text-color);
+}
+
+.textNavigation {
+	color: var(--text-color);
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+
+h1 {
+	color: var(--text-color) !important;
+	font-size: 1.5rem !important;
+	font-weight: 700 !important;
+}
