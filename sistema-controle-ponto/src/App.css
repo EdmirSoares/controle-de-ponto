@@ -113,3 +113,27 @@ body,
 .custom-toaster button:hover {
 	background-color: #ededed !important;
 }
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	gap: 16px;
+	display: flex;
+	flex-direction: column;
+}
+tbody {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+th,
+td {
+	padding: 8px;
+	text-align: left;
+	color: var(--text-color-dark);
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	word-wrap: break-word;
+}

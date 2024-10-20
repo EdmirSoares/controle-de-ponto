@@ -1,0 +1,22 @@
+.statusColumn {
+	width: 162px;
+	height: 45px;
+	padding-left: 39px;
+	padding-right: 39px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	border-radius: 22.5px;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	display: flex;
+}
+
+.statusText {
+	text-align: center;
+	color: #3a974c;
+	font-size: 14px;
+	font-family: Nunito;
+	font-weight: 700;
+	word-wrap: break-word;
+}

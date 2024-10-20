@@ -1,5 +1,5 @@
 import "./styles.css";
-import { Camera, LogOut } from "react-feather";
+import { LogOut } from "react-feather";
 import useApp from "./useApp";
 
 export default function SideMenu() {

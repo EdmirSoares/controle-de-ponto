@@ -1,40 +1,39 @@
+import { LogOut } from "react-feather";
 import "./styles.css";
+import StatusTable from "../StatusTable";
 
-export default function Table() {
+export default function Table({ data }) {
 	return (
-		<div>
-			<div className="headerTable">
-				<div className="labelHeader">Id</div>
-				<div className="labelHeader">Colaborador</div>
-				<div className="labelHeader">Email</div>
-				<div className="labelHeader">Ultimo Ponto</div>
-				<div className="labelHeader">Status</div>
-				<div className="labelHeader">Ações</div>
-			</div>
+		<div className="table-container">
 			<table>
-				<thead>
-					<tr>
-						<th>Nome</th>
-						<th>Idade</th>
-						<th>Profissão</th>
+				<thead className="tableHeader">
+					<tr className="columnsHeader">
+						<th className="labelHeader">ID</th>
+						<th className="labelHeader">Colaborador</th>
+						<th className="labelHeader">Email</th>
+						<th className="labelHeader">Ultimo Ponto</th>
+						<th className="labelHeader">Status</th>
+						<th className="labelHeader">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>João</td>
-						<td>25</td>
-						<td>Programador</td>
-					</tr>
-					<tr>
-						<td>Maria</td>
-						<td>30</td>
-						<td>Designer</td>
-					</tr>
-					<tr>
-						<td>José</td>
-						<td>40</td>
-						<td>Engenheiro</td>
-					</tr>
+					{data.map((item, index) => (
+						<tr
+							key={`${item.idFuncionario}-${index}`}
+							className="columnsBody"
+						>
+							<td>#{item.idFuncionario}</td>
+							<td className="textsColumn">
+								{item.nmFuncionario}
+							</td>
+							<td className="textsColumn">{item.dsEmail}</td>
+							<td className="textsColumn">{item.dtPonto}</td>
+							<td className="textsColumn">
+								<StatusTable statusText={item.tpStatus} />
+							</td>
+							<td className="btnActionsColumn">aaaaa</td>
+						</tr>
+					))}
 				</tbody>
 			</table>
 		</div>
