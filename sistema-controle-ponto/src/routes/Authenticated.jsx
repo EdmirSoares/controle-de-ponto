@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import DashboardFuncionario from "../screens/DashboardFuncionario";
+import Registros from "../screens/Registros";
 
 export default function Authenticated() {
 	return (
@@ -9,6 +10,7 @@ export default function Authenticated() {
 				path="/dashboard-funcionario"
 				element={<DashboardFuncionario />}
 			/>
+			<Route path="/registros" element={<Registros />} />
 		</Routes>
 	);
 }
