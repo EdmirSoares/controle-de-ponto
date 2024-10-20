@@ -1,21 +1,28 @@
 import "./styles.css";
 import SideMenu from "../../components/SideMenu";
+import RightAreaScreen from "../../components/RightAreaScreen";
 
 export default function DashboardFuncionario(props) {
 	return (
 		<div className="container">
 			<SideMenu />
-			<div className="rightContainerScreens">
-				<div className="headerContainerScreens">
-					<div className="textContentHeader">
-						<h1 className="headerTitle">{"Dashboard"}</h1>
-						<p>{"Registro de todos os pontos cadastrados"}</p>
-					</div>
-					<button className="buttonHeader">
-						{"Registrar Ponto"}
-					</button>
+			<RightAreaScreen
+				title="Dashboard"
+				subTitle="Funcionário"
+				buttonLabel="Registrar Ponto"
+			>
+				<div>
+					<h2>Olá, Nome do Funcionário</h2>
+					<p>Seja bem-vindo ao seu dashboard!</p>
+					<p>
+						Confira abaixo as informações sobre o seu último
+						registro de ponto:
+					</p>
+					<p>Data: 01/01/2021</p>
+					<p>Horário: 08:00</p>
+					<p>Status: Entrada</p>
 				</div>
-			</div>
+			</RightAreaScreen>
 		</div>
 	);
 }
