@@ -13,7 +13,9 @@ export default function Registros() {
 			<RightAreaScreen
 				title="Registros"
 				subTitle="Registro de todos os pontos cadastrados"
-				buttonLabel="Registrar Ponto"
+				positiveButtonLabel="Registrar Ponto"
+				onClickPositiveButton={() => console.log("Registrar Ponto")}
+				onClickReload={() => getDataRegisters()}
 			>
 				{dataRegisters && dataRegisters.length === 0 ? (
 					<p>Nenhum registro encontrado</p>

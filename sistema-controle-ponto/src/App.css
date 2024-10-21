@@ -4,6 +4,8 @@
 	box-sizing: border-box;
 	scrollbar-width: thin;
 	scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 :root {
@@ -90,11 +92,11 @@ button {
 	font-family: var(--font-family) !important;
 	background-color: var(--button-background-color);
 	cursor: pointer;
-	transition: border-color 0.25s;
 	color: var(--button-text-color);
 	font-weight: 600;
 	line-height: normal;
 	letter-spacing: 1.5px;
+	border-color: transparent;
 }
 
 button:hover {

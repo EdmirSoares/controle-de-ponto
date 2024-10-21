@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export default function useApp() {
+    const [loading, setLoading] = useState(false);
     const [dataRegisters, setDataRegisters] = useState([{}]);
 
     const data = [
@@ -81,10 +82,9 @@ export default function useApp() {
             //const response = await fetch('http://localhost:3000/registers');
             //const data = await response.json();
 
-            if (data && data.length > 0) {
-                setDataRegisters(data);
-                toast.success('Registros carregados com sucesso');
-            }
+            setDataRegisters(data);
+            setLoading(false);
+            //toast.success('Registros carregados com sucesso');
         } catch (error) {
             console.log(error);
             toast.error('Erro ao carregar os dados');

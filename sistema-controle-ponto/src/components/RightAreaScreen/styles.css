@@ -29,6 +29,31 @@
 	color: var(--text-color-dark) !important;
 }
 
+.buttonContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 8px;
+}
+
+.buttonNegative {
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	color: var(--text-color-light);
+}
+
+.buttonNegative:hover {
+	background-color: var(--button-background-color-secondary);
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+	transition: ease 0.5s;
+}
+
 button {
 	width: 200px;
 	height: 45px;
