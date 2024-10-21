@@ -1,8 +1,10 @@
-import { LogOut } from "react-feather";
-import "./styles.css";
+import { Edit3 } from "react-feather";
 import StatusTable from "../StatusTable";
+import useApp from "./useApp";
+import "./styles.css";
 
 export default function Table({ data }) {
+	const { handleEdit } = useApp();
 	return (
 		<div className="table-container">
 			<table>
@@ -31,7 +33,27 @@ export default function Table({ data }) {
 							<td className="textsColumn">
 								<StatusTable statusText={item.tpStatus} />
 							</td>
-							<td className="btnActionsColumn">aaaaa</td>
+							<td
+								className="btnActionsColumn"
+								style={{
+									opacity:
+										item.tpStatus === "Editado" ||
+										item.tpStatus === "Rejeitado"
+											? 0.5
+											: 1,
+									pointerEvents:
+										item.tpStatus === "Editado" ||
+										item.tpStatus === "Rejeitado"
+											? "none"
+											: "auto",
+								}}
+							>
+								<Edit3
+									size={18}
+									className="btnEdit"
+									onClick={() => handleEdit(item)}
+								/>
+							</td>
 						</tr>
 					))}
 				</tbody>

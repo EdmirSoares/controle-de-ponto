@@ -1,11 +1,11 @@
 .statusColumn {
-	width: 162px;
-	height: 45px;
-	padding-left: 39px;
-	padding-right: 39px;
+	width: 120px;
+	height: 32px;
+	padding-left: 32px;
+	padding-right: 32px;
 	padding-top: 16px;
 	padding-bottom: 16px;
-	border-radius: 22.5px;
+	border-radius: 99px;
 	justify-content: center;
 	align-items: center;
 	gap: 10px;

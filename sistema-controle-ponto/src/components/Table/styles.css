@@ -68,3 +68,17 @@
 	gap: 16px;
 	overflow-y: auto;
 }
+
+.btnEdit {
+	border-radius: 4px;
+	padding: 2px;
+	justify-content: space-between;
+	align-items: center;
+	display: inline-flex;
+}
+
+.btnEdit:hover {
+	background-color: #efefef;
+	cursor: pointer;
+	transition: background-color 0.5s ease;
+}
