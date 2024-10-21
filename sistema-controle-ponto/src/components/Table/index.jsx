@@ -16,7 +16,7 @@ export default function Table({ data }) {
 						<th className="labelHeader">Ações</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className="tableBody">
 					{data.map((item, index) => (
 						<tr
 							key={`${item.idFuncionario}-${index}`}

@@ -2,6 +2,8 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.1);
 }
 
 :root {
@@ -28,6 +30,25 @@
 	--font-weight: 400;
 	--heading-font-weight: 700;
 	--heading-font-size: 2em;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar-track {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 999px;
 }
 
 h1 {
@@ -105,8 +126,10 @@ body,
 	color: var(--button-text-color-secondary);
 	border: none;
 	border-radius: 999;
-	padding: 0 !important;
+	padding: 0px !important;
 	cursor: pointer;
+	width: 18px;
+	height: 18px;
 	transition: background-color 0.3s ease;
 }
 
@@ -121,10 +144,12 @@ table {
 	display: flex;
 	flex-direction: column;
 }
+
 tbody {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	overflow-y: auto;
 }
 
 th,

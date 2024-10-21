@@ -1,8 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
+	const navigate = useNavigate();
+
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [loadingSign, setLoadingSign] = useState(false);
@@ -31,6 +34,7 @@ function AuthProvider({ children }) {
 			//const response = await postLogin();
 			setLocalStorage(dataUser);
 			setUser(dataUser);
+			window.location.reload();
 		} catch (error) {
 			setIsLogged(false);
 			setLoadingSign(false);

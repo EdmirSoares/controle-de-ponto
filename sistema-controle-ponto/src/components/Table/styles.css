@@ -20,11 +20,13 @@
 .table-container {
 	width: 100%;
 	overflow: hidden;
+	display: flex;
+	flex-direction: row;
 }
 
 .tableHeader {
 	width: 100%;
-	height: 100%;
+	height: 10%;
 	padding-left: 16px 20px;
 	border-radius: 10px;
 	justify-content: space-between;
@@ -59,12 +61,10 @@
 	position: relative;
 }
 
-.tbody {
-	display: block;
-	max-height: 70%;
+.tableBody {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	gap: 16px;
 	overflow-y: auto;
-}
-
-tbody {
-	margin-bottom: 10px;
 }
