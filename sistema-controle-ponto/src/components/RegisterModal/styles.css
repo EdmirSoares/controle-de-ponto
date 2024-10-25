@@ -1,0 +1,159 @@
+.modalContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+}
+
+.modalContent {
+	width: 418px;
+	background: #fff;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalHeader {
+	align-self: stretch;
+	padding: 24px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: flex;
+	gap: 6px;
+	background-color: var(--gray-background-color);
+	border-radius: 6px;
+}
+
+.divider {
+	width: 100%;
+	height: 1px;
+	background-color: #e4e4e7;
+}
+
+.modalBody {
+	height: 167px;
+	padding: 24px 24px 0 24px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 16px;
+	display: flex;
+}
+
+.dateText {
+	align-self: stretch;
+	color: #09090b;
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	word-wrap: break-word;
+}
+
+.displayText {
+	align-self: stretch;
+	color: #09090b;
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 700;
+	word-wrap: break-word;
+}
+
+.modalTitle {
+	align-self: stretch;
+	color: #09090b;
+	font-size: 24px;
+	font-family: var(--font-family);
+	font-weight: 700;
+	line-height: 28.8px;
+	word-wrap: break-word;
+}
+
+.modalSubTitle {
+	align-self: stretch;
+	color: var(--text-color-gray);
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 500;
+	word-wrap: break-word;
+}
+
+.dateContainer {
+	width: 268px;
+	height: 63px;
+	justify-content: space-between;
+	align-items: center;
+	display: inline-flex;
+}
+
+.dateTitle {
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: inline-flex;
+}
+
+.displayContent {
+	display: flex;
+	padding: 10px 12px 10px 12px;
+	justify-content: center;
+	align-items: center;
+	background: #ededed;
+	border-radius: 6px;
+}
+
+.confirmText {
+	align-self: stretch;
+	text-align: center;
+	color: #2c2c2e;
+	font-size: 24px;
+	font-family: var(--font-family);
+	font-weight: 900;
+	text-transform: capitalize;
+	line-height: 43.68px;
+	word-wrap: break-word;
+}
+
+.confirmContainer {
+	align-self: stretch;
+	height: 88px;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: flex;
+}
+
+.modalFooter {
+	display: flex;
+	padding: 24px;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 24px;
+	align-self: stretch;
+}
+.footerButtons {
+	display: flex;
+	height: 40px;
+	padding: 10px 16px !important;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	width: 88px;
+}
+.cancelButton {
+	background-color: #fff;
+	color: var(--text-color-dark);
+	border: 1px solid #e4e4e7;
+}
+
+.cancelButton:hover {
+	background-color: #f9f9f9;
+}

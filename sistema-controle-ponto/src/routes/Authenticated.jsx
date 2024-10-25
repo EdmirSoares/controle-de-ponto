@@ -1,15 +1,12 @@
 import { Route, Routes } from "react-router-dom";
-import DashboardFuncionario from "../screens/DashboardFuncionario";
 import Registros from "../screens/Registros";
+import Home from "../screens/Home";
 
 export default function Authenticated() {
 	return (
 		<Routes>
-			<Route path="*" element={<DashboardFuncionario />} />
-			<Route
-				path="/dashboard-funcionario"
-				element={<DashboardFuncionario />}
-			/>
+			<Route path="*" element={<Home />} />
+			<Route path="/home" element={<Home />} />
 			<Route path="/registros" element={<Registros />} />
 		</Routes>
 	);

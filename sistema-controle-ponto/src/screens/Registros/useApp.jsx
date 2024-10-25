@@ -102,6 +102,10 @@ export default function useApp() {
 		console.log("Register");
 	};
 
+	const handleCloseRegister = () => {
+		setModalRegister(false);
+	};
+
 	const handleOpenEdit = (item) => {
 		console.log("Edit item:", item);
 		setModalEdit(true);
@@ -134,6 +138,7 @@ export default function useApp() {
 		modalView,
 		modalEdit,
 		handleOpenRegister,
+		handleCloseRegister,
 		modalRegister,
 	};
 }

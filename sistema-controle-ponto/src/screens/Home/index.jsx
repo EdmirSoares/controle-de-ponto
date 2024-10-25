@@ -2,7 +2,7 @@ import "./styles.css";
 import SideMenu from "../../components/SideMenu";
 import RightAreaScreen from "../../components/RightAreaScreen";
 
-export default function DashboardFuncionario(props) {
+export default function Home() {
 	return (
 		<div className="container">
 			<SideMenu />

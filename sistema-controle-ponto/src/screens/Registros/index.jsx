@@ -3,6 +3,7 @@ import SideMenu from "../../components/SideMenu";
 import RightAreaScreen from "../../components/RightAreaScreen";
 import Table from "../../components/Table";
 import useApp from "./useApp";
+import RegisterModal from "../../components/RegisterModal";
 
 export default function Registros() {
 	const {
@@ -13,6 +14,7 @@ export default function Registros() {
 		modalView,
 		modalEdit,
 		handleOpenRegister,
+		handleCloseRegister,
 		modalRegister,
 	} = useApp();
 
@@ -36,6 +38,7 @@ export default function Registros() {
 					/>
 				)}
 			</RightAreaScreen>
+			{modalRegister && <RegisterModal onClose={handleCloseRegister} />}
 		</div>
 	);
 }
