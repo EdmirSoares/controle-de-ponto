@@ -18,6 +18,17 @@ export default function Login() {
 				</div>
 				<div className="inputContainer">
 					<div className="inputContent">
+						<label className="labelnput">Nome</label>
+						<input
+							type="text"
+							name="name"
+							placeholder="Nome"
+							value={capturedDataLogin.password}
+							onChange={(e) => handleInputChange(e)}
+						/>
+					</div>
+
+					<div className="inputContent">
 						<label className="labelnput">Email</label>
 						<input
 							type="text"
@@ -27,18 +38,9 @@ export default function Login() {
 							onChange={(e) => handleInputChange(e)}
 						/>
 					</div>
-					<div className="inputContent">
-						<label className="labelnput">Senha</label>
-						<input
-							type="password"
-							name="password"
-							placeholder="Senha"
-							value={capturedDataLogin.password}
-							onChange={(e) => handleInputChange(e)}
-						/>
-					</div>
+
 					<div className="forgotPassword">
-						<a href="#">Esqueceu a senha?</a>
+						<a href="#">Esqueceu seu acesso?</a>
 					</div>
 					<button onClick={() => handlerLogin()}>Entrar</button>
 				</div>

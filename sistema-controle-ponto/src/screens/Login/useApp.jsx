@@ -6,8 +6,8 @@ export default function useApp() {
 	const { signIn } = useContext(AuthContext);
 
 	const [capturedDataLogin, setCapturedDataLogin] = useState({
+		name: "",
 		email: "",
-		password: "",
 	});
 
 	const handleInputChange = (e) => {
@@ -19,10 +19,7 @@ export default function useApp() {
 	};
 
 	const handlerLogin = () => {
-		if (
-			capturedDataLogin.email === "" ||
-			capturedDataLogin.password === ""
-		) {
+		if (capturedDataLogin.email === "" || capturedDataLogin.name === "") {
 			toast.error("Preencha todos os campos para continuar");
 			return;
 		}

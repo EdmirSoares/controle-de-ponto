@@ -5,7 +5,16 @@ import Table from "../../components/Table";
 import useApp from "./useApp";
 
 export default function Registros() {
-	const { getDataRegisters, dataRegisters } = useApp();
+	const {
+		getDataRegisters,
+		dataRegisters,
+		handleOpenEdit,
+		handleOpenView,
+		modalView,
+		modalEdit,
+		handleOpenRegister,
+		modalRegister,
+	} = useApp();
 
 	return (
 		<div className="container">
@@ -14,13 +23,17 @@ export default function Registros() {
 				title="Registros"
 				subTitle="Registro de todos os pontos cadastrados"
 				positiveButtonLabel="Registrar Ponto"
-				onClickPositiveButton={() => console.log("Registrar Ponto")}
+				onClickPositiveButton={handleOpenRegister}
 				onClickReload={() => getDataRegisters()}
 			>
 				{dataRegisters && dataRegisters.length === 0 ? (
 					<p>Nenhum registro encontrado</p>
 				) : (
-					<Table data={dataRegisters} />
+					<Table
+						data={dataRegisters}
+						onEdit={handleOpenEdit}
+						onView={handleOpenView}
+					/>
 				)}
 			</RightAreaScreen>
 		</div>
