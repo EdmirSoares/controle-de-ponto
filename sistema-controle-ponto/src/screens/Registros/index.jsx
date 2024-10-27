@@ -6,12 +6,14 @@ import useApp from "./useApp";
 import RegisterModal from "../../components/RegisterModal";
 import ViewModal from "../../components/ViewModal";
 import RequestModal from "../../components/RequestModal";
+import EditModal from "../../components/EditModal";
 
 export default function Registros() {
 	const {
 		getDataRegisters,
 		dataRegisters,
 		handleOpenEdit,
+		handleCloseEdit,
 		handleOpenView,
 		handleCloseView,
 		modalView,
@@ -56,6 +58,7 @@ export default function Registros() {
 			{requestModal && (
 				<RequestModal data={dataView} onClose={handlerCloseRequest} />
 			)}
+			{modalEdit && <EditModal onClose={handleCloseEdit} />}
 		</div>
 	);
 }

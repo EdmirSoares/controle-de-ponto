@@ -30,9 +30,7 @@ export default function useApp(onClose) {
 		try {
 			console.log(formData);
 			handleClose();
-			toast.success(
-				`Ponto registrado às ${formatDate(new Date().toISOString())}!`
-			);
+			toast.success(`Ponto registrado com sucesso!`);
 		} catch (error) {
 			console.error(error);
 		}
