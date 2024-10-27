@@ -32,7 +32,9 @@ export default function EditModal({ onClose, onRequest, data }) {
 									aria-label="Date and time"
 									type="datetime-local"
 									className="displayText"
-									style={{ backgroundColor: "transparent" }}
+									style={{
+										backgroundColor: "transparent",
+									}}
 									onChange={(e) => handlerChangeDateTime(e)}
 								/>
 							</div>

@@ -80,6 +80,7 @@ input {
 	color: var(--text-color-gray);
 	font-family: var(--font-family);
 	font-weight: 600;
+	outline: none;
 }
 
 label {
