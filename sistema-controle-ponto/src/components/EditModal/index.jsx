@@ -32,9 +32,7 @@ export default function EditModal({ onClose, onRequest }) {
 								<p className="infoText">Data e Hora</p>
 							</div>
 							<div className="displayContent">
-								<p className="displayText">
-									{formatDate(data.dtPonto)}
-								</p>
+								<p className="displayText">{""}</p>
 							</div>
 						</div>
 						<div className="infoContainer">
@@ -42,7 +40,7 @@ export default function EditModal({ onClose, onRequest }) {
 								<p className="infoText">Status</p>
 							</div>
 							<div className="displayContent">
-								<p className="displayText">{data.tpStatus}</p>
+								<p className="displayText">{""}</p>
 							</div>
 						</div>
 					</div>
@@ -55,16 +53,9 @@ export default function EditModal({ onClose, onRequest }) {
 								<textarea
 									className="displayDescription"
 									readOnly
-									value={
-										data.dsDescricao &&
-										data.dsDescricao !== ""
-											? data.dsDescricao
-											: "Sem descrição"
-									}
+									value={""}
 								>
-									{data.dsDescricao && data.dsDescricao !== ""
-										? data.dsDescricao
-										: "Sem descrição"}
+									{""}
 								</textarea>
 							</div>
 						</div>
