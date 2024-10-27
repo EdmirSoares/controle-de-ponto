@@ -5,6 +5,7 @@ import { getUserDataLocalStorage } from "../../utils/user";
 
 export default function useApp(onClose) {
 	const [user, setUser] = useState({});
+	const [dateTime, setDateTime] = useState("");
 
 	const localDate = () => {
 		const date = new Date();
