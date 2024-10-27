@@ -92,14 +92,13 @@ export default function useApp() {
 			setLoading(false);
 			//toast.success('Registros carregados com sucesso');
 		} catch (error) {
-			console.log(error);
+			console.error(error);
 			toast.error("Erro ao carregar os dados");
 		}
 	};
 
 	const handleOpenRegister = () => {
 		setModalRegister(true);
-		console.log("Register");
 	};
 
 	const handleCloseRegister = () => {

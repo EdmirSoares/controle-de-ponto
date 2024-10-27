@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatDate } from "../../utils/date";
 import { toast } from "sonner";
+import { getUserDataLocalStorage } from "../../utils/user";
 
 export default function useApp(onClose) {
 	const [dateTime, setDateTime] = useState("");
@@ -18,16 +19,6 @@ export default function useApp(onClose) {
 	const updateDateTime = () => {
 		const formattedDate = formatDate(localDate().toISOString());
 		setDateTime(formattedDate);
-	};
-
-	const getUserDataLocalStorage = () => {
-		const user = localStorage.getItem("@user_data");
-		if (user) {
-			setUser(JSON.parse(user));
-			return;
-		} else {
-			toast.error("Usuário não encontrado!");
-		}
 	};
 
 	const handleConfirm = () => {
@@ -55,7 +46,7 @@ export default function useApp(onClose) {
 	};
 
 	useEffect(() => {
-		getUserDataLocalStorage();
+		setUser(getUserDataLocalStorage());
 	}, []);
 
 	useEffect(() => {
