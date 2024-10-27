@@ -181,6 +181,10 @@ export default function useApp() {
 		setRequestModal(true);
 	};
 
+	const handlerCloseRequest = () => {
+		setRequestModal(false);
+	};
+
 	useEffect(() => {
 		getDataRegisters();
 	}, []);
@@ -198,6 +202,7 @@ export default function useApp() {
 		handleOpenRegister,
 		handleCloseRegister,
 		handlerRequestEdit,
+		handlerCloseRequest,
 		modalRegister,
 		requestModal,
 	};

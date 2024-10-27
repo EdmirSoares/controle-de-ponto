@@ -11,8 +11,8 @@
 	z-index: 1000;
 }
 
-.modalContentView {
-	width: 600px;
+.modalContentRequest {
+	width: 418px;
 	background: #fff;
 	border-radius: 6px;
 	display: flex;
@@ -202,4 +202,12 @@
 
 .cancelButton:hover {
 	background-color: #f9f9f9;
+}
+
+.alertInfoText {
+	color: #b8150f;
+	font-size: 12px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	word-wrap: break-word;
 }

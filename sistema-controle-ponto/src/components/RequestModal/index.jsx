@@ -4,72 +4,58 @@ import "./styles.css";
 import { formatDate } from "../../utils/date";
 
 export default function RequestModal({ data, onClose }) {
-	const { handleConfirm, handleClose } = useApp(onClose, data);
+	const {
+		handleConfirm,
+		handleClose,
+		description,
+		setDescription,
+		disabledButton,
+		isDescriptionEmpty,
+	} = useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
 			<div
-				className="modalContentView"
+				className="modalContentRequest"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
-						<h2 className="modalTitle">Visualização do Registro</h2>
+						<h2 className="modalTitle">Solicitar Edição</h2>
 						<p className="modalSubTitle">
-							Confira todos os dados dos eu registro!
+							Informe abaixo o motivo da solicitação
 						</p>
 					</div>
-					{data.tpStatus === "Confirmado" && (
-						<button
-							className="footerButtons"
-							onClick={handleConfirm}
-						>
-							Solicitar Edição
-						</button>
-					)}
 				</div>
 				<div className="modalBody">
-					<div className="upperContainer">
-						<div className="infoContainer">
-							<div className="labelTitle">
-								<p className="infoText">Data e Hora</p>
-							</div>
-							<div className="displayContent">
-								<p className="displayText">
-									{formatDate(data.dtPonto)}
-								</p>
-							</div>
-						</div>
-						<div className="infoContainer">
-							<div className="labelTitle">
-								<p className="infoText">Status</p>
-							</div>
-							<div className="displayContent">
-								<p className="displayText">{data.tpStatus}</p>
-							</div>
-						</div>
-					</div>
 					<div className="lowerContainer">
 						<div className="descriptionContainer">
 							<div className="labelTitle">
 								<p className="infoText">Descrição</p>
 							</div>
-							<div className="descriptionContent">
+							<div
+								className="descriptionContent"
+								style={{
+									border:
+										isDescriptionEmpty && "1px solid red",
+								}}
+							>
 								<textarea
 									className="displayDescription"
-									readOnly
-									value={
-										data.dsDescricao &&
-										data.dsDescricao !== ""
-											? data.dsDescricao
-											: "Sem descrição"
-									}
+									value={description}
+									onChange={(e) => {
+										setDescription(e.target.value);
+									}}
+									required
 								>
-									{data.dsDescricao && data.dsDescricao !== ""
-										? data.dsDescricao
-										: "Sem descrição"}
+									{description}
 								</textarea>
 							</div>
+							{isDescriptionEmpty && (
+								<p className="alertInfoText">
+									* Informe um motivo
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -79,6 +65,9 @@ export default function RequestModal({ data, onClose }) {
 						onClick={handleClose}
 					>
 						Cancelar
+					</button>
+					<button className="footerButtons" onClick={handleConfirm}>
+						Solicitar
 					</button>
 				</div>
 			</div>

@@ -20,6 +20,7 @@ export default function Registros() {
 		handleOpenRegister,
 		handleCloseRegister,
 		handlerRequestEdit,
+		handlerCloseRequest,
 		modalRegister,
 		requestModal,
 	} = useApp();
@@ -53,7 +54,7 @@ export default function Registros() {
 				/>
 			)}
 			{requestModal && (
-				<RequestModal data={dataView} onClose={handleCloseView} />
+				<RequestModal data={dataView} onClose={handlerCloseRequest} />
 			)}
 		</div>
 	);

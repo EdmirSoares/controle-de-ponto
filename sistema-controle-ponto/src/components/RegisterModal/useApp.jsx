@@ -4,7 +4,6 @@ import { toast } from "sonner";
 import { getUserDataLocalStorage } from "../../utils/user";
 
 export default function useApp(onClose) {
-	const [dateTime, setDateTime] = useState("");
 	const [user, setUser] = useState({});
 
 	const localDate = () => {

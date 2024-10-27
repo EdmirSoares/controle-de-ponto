@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { formatDate } from "../../utils/date";
 import { toast } from "sonner";
 import { getUserDataLocalStorage } from "../../utils/user";
 
 export default function useApp(onClose) {
 	const [dateTime, setDateTime] = useState("");
+	const [description, setDescription] = useState("");
+	const [disabledButton, setDisabledButton] = useState(true);
+	const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
 	const [user, setUser] = useState({});
 
 	const localDate = () => {
@@ -16,24 +18,22 @@ export default function useApp(onClose) {
 		return localDate;
 	};
 
-	const updateDateTime = () => {
-		const formattedDate = formatDate(localDate().toISOString());
-		setDateTime(formattedDate);
-	};
-
 	const handleConfirm = () => {
 		const formData = {
 			userName: user.name,
 			userEmail: user.email,
 			date: localDate().toISOString(),
+			dsDescricao: description,
 		};
 
 		try {
-			console.log(formData);
+			if (!description) {
+				setIsDescriptionEmpty(true);
+				return;
+			}
+
 			handleClose();
-			toast.success(
-				`Ponto registrado às ${formatDate(new Date().toISOString())}!`
-			);
+			toast.success(`Solicitação enviada com sucesso!`);
 		} catch (error) {
 			console.error(error);
 		}
@@ -43,6 +43,8 @@ export default function useApp(onClose) {
 		onClose();
 		setDateTime("");
 		setUser({});
+		setDescription("");
+		setIsDescriptionEmpty(false);
 	};
 
 	useEffect(() => {
@@ -50,16 +52,22 @@ export default function useApp(onClose) {
 	}, []);
 
 	useEffect(() => {
-		updateDateTime();
-		const interval = setInterval(() => {
-			updateDateTime();
-		}, 1000);
-		return () => clearInterval(interval);
-	}, []);
+		if (!description) {
+			setDisabledButton(true);
+			return;
+		}
+		if (description.length > 0) {
+			setIsDescriptionEmpty(false);
+		}
+	}, [description]);
 
 	return {
 		dateTime,
 		handleConfirm,
 		handleClose,
+		description,
+		setDescription,
+		disabledButton,
+		isDescriptionEmpty,
 	};
 }
