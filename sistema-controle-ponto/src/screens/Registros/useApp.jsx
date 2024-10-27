@@ -5,6 +5,7 @@ export default function useApp() {
 	const [loading, setLoading] = useState(false);
 	const [dataRegisters, setDataRegisters] = useState([{}]);
 	const [dataView, setDataView] = useState([{}]);
+	const [dataEdit, setDataEdit] = useState([{}]);
 
 	const [modalRegister, setModalRegister] = useState(false);
 
@@ -163,7 +164,7 @@ export default function useApp() {
 	};
 
 	const handleCloseEdit = () => {
-		setModalView(false);
+		setModalEdit(false);
 	};
 
 	const handleOpenView = (item) => {
@@ -176,7 +177,7 @@ export default function useApp() {
 	};
 
 	const handlerRequestEdit = () => {
-		setDataView({});
+		setDataEdit(dataView);
 		setModalView(false);
 		setRequestModal(true);
 	};
@@ -205,5 +206,6 @@ export default function useApp() {
 		handlerCloseRequest,
 		modalRegister,
 		requestModal,
+		dataEdit,
 	};
 }

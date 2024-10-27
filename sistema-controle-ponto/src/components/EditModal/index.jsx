@@ -3,27 +3,23 @@ import useApp from "./useApp";
 import "./styles.css";
 import { formatDate } from "../../utils/date";
 
-export default function EditModal({ onClose, onRequest }) {
-	const { handleClose } = useApp(onClose);
+export default function EditModal({ onClose, onRequest, data }) {
+	const { handleClose, handlerChangeDateTime, handleConfirm } =
+		useApp(onClose);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
 			<div
-				className="modalContentView"
+				className="modalContentEdit"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
-						<h2 className="modalTitle">Visualização do Registro</h2>
+						<h2 className="modalTitle">Editar Registro</h2>
 						<p className="modalSubTitle">
-							Confira todos os dados dos eu registro!
+							Atualize sua jornada de trabalho
 						</p>
 					</div>
-					{data.tpStatus === "Confirmado" && (
-						<button className="footerButtons" onClick={onRequest}>
-							Solicitar Edição
-						</button>
-					)}
 				</div>
 				<div className="modalBody">
 					<div className="upperContainer">
@@ -32,15 +28,13 @@ export default function EditModal({ onClose, onRequest }) {
 								<p className="infoText">Data e Hora</p>
 							</div>
 							<div className="displayContent">
-								<p className="displayText">{""}</p>
-							</div>
-						</div>
-						<div className="infoContainer">
-							<div className="labelTitle">
-								<p className="infoText">Status</p>
-							</div>
-							<div className="displayContent">
-								<p className="displayText">{""}</p>
+								<input
+									aria-label="Date and time"
+									type="datetime-local"
+									className="displayText"
+									style={{ backgroundColor: "transparent" }}
+									onChange={(e) => handlerChangeDateTime(e)}
+								/>
 							</div>
 						</div>
 					</div>
@@ -53,9 +47,14 @@ export default function EditModal({ onClose, onRequest }) {
 								<textarea
 									className="displayDescription"
 									readOnly
-									value={""}
+									value={
+										data.dsDescicao &&
+										data.dsDescricao !== ""
+											? data.dsDescricao
+											: "Sem descrição"
+									}
 								>
-									{""}
+									{data.dsDescicao}
 								</textarea>
 							</div>
 						</div>
@@ -67,6 +66,9 @@ export default function EditModal({ onClose, onRequest }) {
 						onClick={handleClose}
 					>
 						Cancelar
+					</button>
+					<button className="footerButtons" onClick={handleConfirm}>
+						Enviar
 					</button>
 				</div>
 			</div>

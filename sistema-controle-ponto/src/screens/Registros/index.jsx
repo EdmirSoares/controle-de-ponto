@@ -25,6 +25,7 @@ export default function Registros() {
 		handlerCloseRequest,
 		modalRegister,
 		requestModal,
+		dataEdit,
 	} = useApp();
 
 	return (
@@ -58,7 +59,9 @@ export default function Registros() {
 			{requestModal && (
 				<RequestModal data={dataView} onClose={handlerCloseRequest} />
 			)}
-			{modalEdit && <EditModal onClose={handleCloseEdit} />}
+			{modalEdit && (
+				<EditModal onClose={handleCloseEdit} data={dataEdit} />
+			)}
 		</div>
 	);
 }

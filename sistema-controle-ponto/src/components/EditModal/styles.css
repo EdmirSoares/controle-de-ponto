@@ -11,8 +11,8 @@
 	z-index: 1000;
 }
 
-.modalContentView {
-	width: 600px;
+.modalContentEdit {
+	width: 418px;
 	background: #fff;
 	border-radius: 6px;
 	display: flex;
