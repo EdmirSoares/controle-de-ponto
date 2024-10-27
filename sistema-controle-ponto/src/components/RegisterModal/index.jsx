@@ -8,7 +8,10 @@ export default function RegisterModal({ onClose }) {
 	return (
 		<div className="modalContainer" onClick={handleClose}>
 			{dateTime && (
-				<div className="modalContent">
+				<div
+					className="modalContent"
+					onClick={(e) => e.stopPropagation()}
+				>
 					<div className="modalHeader">
 						<h2 className="modalTitle">Registrar Ponto</h2>
 						<p className="modalSubTitle">Marque sua presença!</p>

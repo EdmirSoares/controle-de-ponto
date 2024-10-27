@@ -4,6 +4,8 @@ import RightAreaScreen from "../../components/RightAreaScreen";
 import Table from "../../components/Table";
 import useApp from "./useApp";
 import RegisterModal from "../../components/RegisterModal";
+import ViewModal from "../../components/ViewModal";
+import RequestModal from "../../components/RequestModal";
 
 export default function Registros() {
 	const {
@@ -11,11 +13,15 @@ export default function Registros() {
 		dataRegisters,
 		handleOpenEdit,
 		handleOpenView,
+		handleCloseView,
 		modalView,
+		dataView,
 		modalEdit,
 		handleOpenRegister,
 		handleCloseRegister,
+		handlerRequestEdit,
 		modalRegister,
+		requestModal,
 	} = useApp();
 
 	return (
@@ -39,6 +45,16 @@ export default function Registros() {
 				)}
 			</RightAreaScreen>
 			{modalRegister && <RegisterModal onClose={handleCloseRegister} />}
+			{modalView && (
+				<ViewModal
+					data={dataView}
+					onClose={handleCloseView}
+					onRequest={handlerRequestEdit}
+				/>
+			)}
+			{requestModal && (
+				<RequestModal data={dataView} onClose={handleCloseView} />
+			)}
 		</div>
 	);
 }

@@ -4,11 +4,13 @@ import { toast } from "sonner";
 export default function useApp() {
 	const [loading, setLoading] = useState(false);
 	const [dataRegisters, setDataRegisters] = useState([{}]);
+	const [dataView, setDataView] = useState([{}]);
 
 	const [modalRegister, setModalRegister] = useState(false);
 
 	const [modalView, setModalView] = useState(false);
 	const [modalEdit, setModalEdit] = useState(false);
+	const [requestModal, setRequestModal] = useState(false);
 
 	const data = [
 		{
@@ -17,6 +19,7 @@ export default function useApp() {
 			dsEmail: "alexsouza@gmail.com",
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T08:30:00Z",
+			dsDescricao: "Correção de horário",
 		},
 		{
 			idFuncionario: "2",
@@ -24,6 +27,7 @@ export default function useApp() {
 			dsEmail: "mariasilva@gmail.com",
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T09:00:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "3",
@@ -31,6 +35,7 @@ export default function useApp() {
 			dsEmail: "joaopereira@gmail.com",
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T09:15:00Z",
+			dsDescricao: "Atraso não justificado",
 		},
 		{
 			idFuncionario: "4",
@@ -38,6 +43,7 @@ export default function useApp() {
 			dsEmail: "anacosta@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T09:45:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "5",
@@ -45,6 +51,7 @@ export default function useApp() {
 			dsEmail: "carloslima@gmail.com",
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T10:00:00Z",
+			dsDescricao: "Correção de ponto manual",
 		},
 		{
 			idFuncionario: "6",
@@ -52,6 +59,7 @@ export default function useApp() {
 			dsEmail: "beatrizfernandes@gmail.com",
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T10:30:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "7",
@@ -59,6 +67,7 @@ export default function useApp() {
 			dsEmail: "pedrorocha@gmail.com",
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T11:00:00Z",
+			dsDescricao: "Alteração solicitada pelo gestor",
 		},
 		{
 			idFuncionario: "8",
@@ -66,6 +75,7 @@ export default function useApp() {
 			dsEmail: "lucasoliveira@gmail.com",
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T11:30:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "9",
@@ -73,6 +83,7 @@ export default function useApp() {
 			dsEmail: "julianasantos@gmail.com",
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T12:00:00Z",
+			dsDescricao: "Registro duplicado",
 		},
 		{
 			idFuncionario: "10",
@@ -80,6 +91,7 @@ export default function useApp() {
 			dsEmail: "fernandoribeiro@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T12:30:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "11",
@@ -87,6 +99,7 @@ export default function useApp() {
 			dsEmail: "carlamendes@gmail.com",
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T13:00:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "12",
@@ -94,6 +107,7 @@ export default function useApp() {
 			dsEmail: "ricardomartins@gmail.com",
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T13:30:00Z",
+			dsDescricao: "Atualização de horário",
 		},
 		{
 			idFuncionario: "13",
@@ -101,6 +115,7 @@ export default function useApp() {
 			dsEmail: "patricia.almeida@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T14:00:00Z",
+			dsDescricao: "",
 		},
 		{
 			idFuncionario: "14",
@@ -108,6 +123,7 @@ export default function useApp() {
 			dsEmail: "thiagonunes@gmail.com",
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T14:30:00Z",
+			dsDescricao: "Horário inconsistente",
 		},
 		{
 			idFuncionario: "15",
@@ -115,6 +131,7 @@ export default function useApp() {
 			dsEmail: "marianacampos@gmail.com",
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T15:00:00Z",
+			dsDescricao: "",
 		},
 	];
 
@@ -150,12 +167,18 @@ export default function useApp() {
 	};
 
 	const handleOpenView = (item) => {
-		console.log("View item:", item);
+		setDataView(item);
 		setModalView(true);
 	};
 
 	const handleCloseView = () => {
 		setModalView(false);
+	};
+
+	const handlerRequestEdit = () => {
+		setDataView({});
+		setModalView(false);
+		setRequestModal(true);
 	};
 
 	useEffect(() => {
@@ -170,9 +193,12 @@ export default function useApp() {
 		handleOpenView,
 		handleCloseView,
 		modalView,
+		dataView,
 		modalEdit,
 		handleOpenRegister,
 		handleCloseRegister,
+		handlerRequestEdit,
 		modalRegister,
+		requestModal,
 	};
 }
