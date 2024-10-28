@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AuthContext } from "../../context/auth";
 
 export default function useApp() {
 	const [activeScreen, setActiveScreen] = useState("Dashboard");
 	const navigate = useNavigate();
 	const location = useLocation();
+
+	const { signOut } = useContext(AuthContext);
 
 	const handleNavigation = (screen) => {
 		if (activeScreen === screen) return;
@@ -31,5 +34,5 @@ export default function useApp() {
 		}
 	}, [location, activeScreen]);
 
-	return { handleNavigation, activeScreen };
+	return { handleNavigation, signOut };
 }

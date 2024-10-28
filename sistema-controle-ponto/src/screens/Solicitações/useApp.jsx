@@ -144,6 +144,33 @@ export default function useApp() {
 		}
 	};
 
+	const putApprove = async () => {
+		try {
+			//const response = await fetch('http://localhost:3000/registers');
+			//const data = await response.json();
+			setModalApprove(!modalApprove);
+			setLoading(false);
+			toast.success("Solicitação aprovada com sucesso");
+		} catch (error) {
+			console.error(error);
+			toast.error("Erro ao carregar os dados");
+		}
+	};
+
+	const putReject = async () => {
+		try {
+			//const response = await fetch('http://localhost:3000/registers');
+			//const data = await response.json();
+
+			setModalApprove(!modalApprove);
+			setLoading(false);
+			toast.success("Solicitação rejeitada com sucesso");
+		} catch (error) {
+			console.error(error);
+			toast.error("Erro ao carregar os dados");
+		}
+	};
+
 	const handlerModalApprove = (item) => {
 		setModalApprove(!modalApprove);
 		setApproveData(item);
@@ -164,5 +191,7 @@ export default function useApp() {
 		approveData,
 		handlerModalApprove,
 		handleCloseModalApprove,
+		putApprove,
+		putReject,
 	};
 }

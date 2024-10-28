@@ -209,7 +209,19 @@
 	color: #d11a2a;
 }
 
+.rejectButton:hover {
+	background-color: rgb(209, 26, 42, 0.3);
+	color: #fff;
+	transition: ease-in 0.3s;
+}
+
 .approveBurron {
 	background-color: rgb(58, 151, 76, 0.2);
 	color: #3a974c;
+}
+
+.approveBurron:hover {
+	background-color: rgb(58, 151, 76, 0.4);
+	color: #fff;
+	transition: ease-in 0.3s;
 }

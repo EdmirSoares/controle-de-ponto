@@ -3,7 +3,7 @@ import { LogOut } from "react-feather";
 import useApp from "./useApp";
 
 export default function SideMenu() {
-	const { handleNavigation } = useApp();
+	const { handleNavigation, signOut } = useApp();
 	return (
 		<div className="containerSideMenu">
 			<div className="headerContainer">
@@ -41,8 +41,10 @@ export default function SideMenu() {
 				</div>
 			</div>
 			<div className="footerContainer">
-				<p className="textNavigation">Sair</p>
-				<LogOut />
+				<p className="textNavigation" onClick={signOut}>
+					Sair
+				</p>
+				<LogOut onClick={signOut} style={{ cursor: "pointer" }} />
 			</div>
 		</div>
 	);
