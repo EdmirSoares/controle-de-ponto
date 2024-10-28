@@ -22,11 +22,18 @@ export default function useApp() {
 				backgroundColor: "rgba(209, 26, 42, 0.10)",
 			};
 		}
+		if (statusText === "Aguardando") {
+			return {
+				text: "Aguardando",
+				color: "#421ad1",
+				backgroundColor: "rgba(66, 26, 209, 0.10)",
+			};
+		}
 		if (statusText === "Disponível") {
 			return {
 				text: "Disponível",
-				color: "#421ad1",
-				backgroundColor: "rgba(66, 26, 209, 0.10)",
+				color: "#1aa0d1",
+				backgroundColor: "rgba(26, 160, 290, 0.10)",
 			};
 		}
 

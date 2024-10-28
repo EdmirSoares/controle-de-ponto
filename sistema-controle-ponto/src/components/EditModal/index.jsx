@@ -1,11 +1,16 @@
 import React from "react";
 import useApp from "./useApp";
 import "./styles.css";
-import { formatDate } from "../../utils/date";
 
-export default function EditModal({ onClose, onRequest, data }) {
-	const { handleClose, handlerChangeDateTime, handleConfirm } =
-		useApp(onClose);
+export default function EditModal({ onClose, data }) {
+	const {
+		handleClose,
+		handlerChangeDateTime,
+		handleConfirm,
+		isDateTimeEmpty,
+		dateTime,
+		dataEdit,
+	} = useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
@@ -27,11 +32,20 @@ export default function EditModal({ onClose, onRequest, data }) {
 							<div className="labelTitle">
 								<p className="infoText">Data e Hora</p>
 							</div>
-							<div className="displayContent">
+							<div
+								className="displayContent"
+								style={{
+									border:
+										isDateTimeEmpty &&
+										dataEdit.dtPonto &&
+										"1px solid red",
+								}}
+							>
 								<input
 									aria-label="Date and time"
 									type="datetime-local"
 									className="displayText"
+									value={dateTime}
 									style={{
 										backgroundColor: "transparent",
 									}}

@@ -23,6 +23,7 @@ export default function Registros() {
 		handleCloseRegister,
 		handlerRequestEdit,
 		handlerCloseRequest,
+		dataRequest,
 		modalRegister,
 		requestModal,
 		dataEdit,
@@ -57,7 +58,10 @@ export default function Registros() {
 				/>
 			)}
 			{requestModal && (
-				<RequestModal data={dataView} onClose={handlerCloseRequest} />
+				<RequestModal
+					data={dataRequest}
+					onClose={handlerCloseRequest}
+				/>
 			)}
 			{modalEdit && (
 				<EditModal onClose={handleCloseEdit} data={dataEdit} />
