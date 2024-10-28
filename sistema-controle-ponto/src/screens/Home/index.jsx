@@ -263,7 +263,7 @@ export default function Home() {
 									width: "100%",
 									borderRadius: 12,
 								}}
-								src={newsUmBanner}
+								src={newsTresBanner}
 							/>
 							<div
 								style={{
