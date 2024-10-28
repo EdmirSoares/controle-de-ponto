@@ -11,7 +11,7 @@
 	z-index: 1000;
 }
 
-.modalContentEdit {
+.modalContentApprove {
 	width: 418px;
 	background: #fff;
 	border-radius: 6px;
@@ -202,4 +202,14 @@
 
 .cancelButton:hover {
 	background-color: #f9f9f9;
+}
+
+.rejectButton {
+	background-color: rgb(209, 26, 42, 0.2);
+	color: #d11a2a;
+}
+
+.approveBurron {
+	background-color: rgb(58, 151, 76, 0.2);
+	color: #3a974c;
 }
