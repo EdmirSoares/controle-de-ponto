@@ -47,6 +47,7 @@ function AuthProvider({ children }) {
 			setUser(null);
 			setIsLogged(false);
 			localStorage.removeItem("@user_data");
+			window.location.reload();
 		} catch (error) {
 			console.log(error);
 		} finally {

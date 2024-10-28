@@ -18,6 +18,8 @@ export default function Solicitacoes() {
 		approveData,
 		handlerModalApprove,
 		handleCloseModalApprove,
+		putApprove,
+		putReject,
 	} = useApp();
 
 	return (
@@ -37,8 +39,8 @@ export default function Solicitacoes() {
 				<ApproveModal
 					data={approveData}
 					onClose={handleCloseModalApprove}
-					onConfirm={handlerModalApprove}
-					onReject={handleCloseModalApprove}
+					onConfirm={putApprove}
+					onReject={putReject}
 				/>
 			)}
 		</div>
