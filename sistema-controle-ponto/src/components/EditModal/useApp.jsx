@@ -4,7 +4,8 @@ import { toast } from "sonner";
 
 export default function useApp(onClose, initialData) {
 	const [user, setUser] = useState({});
-	const [dateTime, setDateTime] = useState("");
+	const [date, setDate] = useState("");
+	const [time, setTime] = useState("");
 	const [isDateTimeEmpty, setIsDateTimeEmpty] = useState(false);
 	const [dataEdit, setDataEdit] = useState({});
 
@@ -16,11 +17,16 @@ export default function useApp(onClose, initialData) {
 		onClose();
 	};
 
-	const handlerChangeDateTime = (e) => {
-		setDateTime(e.target.value);
+	const handlerChangeDate = (e) => {
+		setDate(e.target.value);
+	};
+
+	const handlerChangeTime = (e) => {
+		setTime(e.target.value);
 	};
 
 	const handleConfirm = () => {
+		const dateTime = `${date}T${time}`;
 		const formData = {
 			nmFuncionario: user.name,
 			dsEmail: user.email,
@@ -51,22 +57,26 @@ export default function useApp(onClose, initialData) {
 
 	useEffect(() => {
 		if (dataEdit.dtPonto) {
-			setDateTime(convertToDateTimeLocalFormat(dataEdit.dtPonto));
+			const [datePart, timePart] = dataEdit.dtPonto.split("T");
+			setDate(datePart);
+			setTime(timePart.slice(0, 5)); // Remove os segundos
 		}
 	}, [dataEdit.dtPonto]);
 
 	useEffect(() => {
-		if (dateTime !== "") {
+		if (date !== "" && time !== "") {
 			setIsDateTimeEmpty(false);
 		}
-	}, [dateTime]);
+	}, [date, time]);
 
 	return {
 		handleClose,
-		handlerChangeDateTime,
+		handlerChangeDate,
+		handlerChangeTime,
 		handleConfirm,
 		isDateTimeEmpty,
-		dateTime,
+		date,
+		time,
 		dataEdit,
 		convertToDateTimeLocalFormat,
 	};

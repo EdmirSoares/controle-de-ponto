@@ -113,7 +113,7 @@
 
 .infoContainer {
 	width: 100%;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: flex-start;
 	align-items: flex-start;
 	display: inline-flex;
@@ -127,14 +127,32 @@
 	display: inline-flex;
 }
 
-.displayContent {
+.infoContainerEditModal {
+	width: 100%;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: inline-flex;
+	gap: 6px;
+}
+
+.displayContainerEdit {
+	width: 100%;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	display: inline-flex;
+	gap: 6px;
+}
+
+.displayContentEdit {
 	display: flex;
-	padding: 10px 12px 10px 12px;
 	justify-content: flex-start;
 	align-items: center;
 	background: #ededed;
 	border-radius: 6px;
 	width: 100%;
+	gap: 8px;
 }
 
 .descriptionContainer {

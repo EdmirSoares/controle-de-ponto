@@ -5,10 +5,12 @@ import "./styles.css";
 export default function EditModal({ onClose, data }) {
 	const {
 		handleClose,
-		handlerChangeDateTime,
+		handlerChangeDate,
+		handlerChangeTime,
 		handleConfirm,
 		isDateTimeEmpty,
-		dateTime,
+		date,
+		time,
 		dataEdit,
 	} = useApp(onClose, data);
 
@@ -28,29 +30,51 @@ export default function EditModal({ onClose, data }) {
 				</div>
 				<div className="modalBody">
 					<div className="upperContainer">
-						<div className="infoContainer">
+						<div className="infoContainerEditModal">
 							<div className="labelTitle">
 								<p className="infoText">Data e Hora</p>
 							</div>
-							<div
-								className="displayContent"
-								style={{
-									border:
-										isDateTimeEmpty &&
-										dataEdit.dtPonto &&
-										"1px solid red",
-								}}
-							>
-								<input
-									aria-label="Date and time"
-									type="datetime-local"
-									className="displayText"
-									value={dateTime}
+							<div className="displayContainerEdit">
+								<div
+									className="displayContentEdit"
 									style={{
-										backgroundColor: "transparent",
+										border:
+											isDateTimeEmpty &&
+											dataEdit.dtPonto &&
+											"1px solid red",
 									}}
-									onChange={(e) => handlerChangeDateTime(e)}
-								/>
+								>
+									<input
+										aria-label="Date"
+										type="date"
+										className="displayText"
+										value={date}
+										style={{
+											backgroundColor: "transparent",
+										}}
+										onChange={(e) => handlerChangeDate(e)}
+									/>
+								</div>
+								<div
+									className="displayContentEdit"
+									style={{
+										border:
+											isDateTimeEmpty &&
+											dataEdit.dtPonto &&
+											"1px solid red",
+									}}
+								>
+									<input
+										aria-label="Time"
+										type="time"
+										className="displayText"
+										value={time}
+										style={{
+											backgroundColor: "transparent",
+										}}
+										onChange={(e) => handlerChangeTime(e)}
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
