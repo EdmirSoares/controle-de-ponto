@@ -37,7 +37,17 @@ export default function SideMenu() {
 					className="menuItem"
 					onClick={() => handleNavigation("/solicitacoes")}
 				>
-					<p className="textNavigation">Solicitações</p>
+					<p className="textNavigation" data-screen="/solicitacoes">
+						Solicitações
+					</p>
+				</div>
+				<div
+					className="menuItem"
+					onClick={() => handleNavigation("/colaboradores")}
+				>
+					<p className="textNavigation" data-screen="/colaboradores">
+						Colaboradores
+					</p>
 				</div>
 			</div>
 			<div className="footerContainer">

@@ -22,6 +22,8 @@ export default function useApp() {
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T08:30:00Z",
 			dsDescricao: "Correção de horário",
+			dsJustificativa:
+				"Solicitação aprovada pelo gestor por motivo válido",
 		},
 		{
 			idFuncionario: "2",
@@ -30,6 +32,7 @@ export default function useApp() {
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T09:00:00Z",
 			dsDescricao: "",
+			dsJustificativa: "",
 		},
 		{
 			idFuncionario: "3",
@@ -37,7 +40,8 @@ export default function useApp() {
 			dsEmail: "joaopereira@gmail.com",
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T09:15:00Z",
-			dsDescricao: "Atraso não justificado",
+			dsDescricao: "Atraso por motivo pessoal",
+			dsJustificativa: "Justificativa inválida",
 		},
 		{
 			idFuncionario: "4",
@@ -45,7 +49,8 @@ export default function useApp() {
 			dsEmail: "anacosta@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T09:45:00Z",
-			dsDescricao: "",
+			dsDescricao: "Problemas de saúde",
+			dsJustificativa: "Justificativa válida para atraso",
 		},
 		{
 			idFuncionario: "5",
@@ -54,6 +59,8 @@ export default function useApp() {
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T10:00:00Z",
 			dsDescricao: "Correção de ponto manual",
+			dsJustificativa:
+				"Solicitação aprovada pelo gestor por motivo válido",
 		},
 		{
 			idFuncionario: "6",
@@ -62,6 +69,7 @@ export default function useApp() {
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T10:30:00Z",
 			dsDescricao: "",
+			dsJustificativa: "",
 		},
 		{
 			idFuncionario: "7",
@@ -70,6 +78,8 @@ export default function useApp() {
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T11:00:00Z",
 			dsDescricao: "Alteração solicitada pelo gestor",
+			dsJustificativa:
+				"Solicitação aprovada pelo gestor por motivo válido",
 		},
 		{
 			idFuncionario: "8",
@@ -78,6 +88,7 @@ export default function useApp() {
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T11:30:00Z",
 			dsDescricao: "",
+			dsJustificativa: "",
 		},
 		{
 			idFuncionario: "9",
@@ -86,6 +97,7 @@ export default function useApp() {
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T12:00:00Z",
 			dsDescricao: "Registro duplicado",
+			dsJustificativa: "Solicitação inválida, registro não duplicado",
 		},
 		{
 			idFuncionario: "10",
@@ -93,7 +105,8 @@ export default function useApp() {
 			dsEmail: "fernandoribeiro@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T12:30:00Z",
-			dsDescricao: "",
+			dsDescricao: "Atraso no exame médico",
+			dsJustificativa: "Justificativa válida para atraso",
 		},
 		{
 			idFuncionario: "11",
@@ -102,6 +115,7 @@ export default function useApp() {
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T13:00:00Z",
 			dsDescricao: "",
+			dsJustificativa: "",
 		},
 		{
 			idFuncionario: "12",
@@ -110,6 +124,8 @@ export default function useApp() {
 			tpStatus: "Editado",
 			dtPonto: "2023-10-01T13:30:00Z",
 			dsDescricao: "Atualização de horário",
+			dsJustificativa:
+				"Solicitação aprovada pelo gestor por motivo válido",
 		},
 		{
 			idFuncionario: "13",
@@ -117,7 +133,8 @@ export default function useApp() {
 			dsEmail: "patricia.almeida@gmail.com",
 			tpStatus: "Disponível",
 			dtPonto: "2023-10-01T14:00:00Z",
-			dsDescricao: "",
+			dsDescricao: "Acidente de trânsito",
+			dsJustificativa: "Justificativa válida para atraso",
 		},
 		{
 			idFuncionario: "14",
@@ -126,6 +143,8 @@ export default function useApp() {
 			tpStatus: "Rejeitado",
 			dtPonto: "2023-10-01T14:30:00Z",
 			dsDescricao: "Horário inconsistente",
+			dsJustificativa:
+				"Justificativa inválida, horário compatível com a jornada",
 		},
 		{
 			idFuncionario: "15",
@@ -134,6 +153,7 @@ export default function useApp() {
 			tpStatus: "Confirmado",
 			dtPonto: "2023-10-01T15:00:00Z",
 			dsDescricao: "",
+			dsJustificativa: "",
 		},
 	];
 

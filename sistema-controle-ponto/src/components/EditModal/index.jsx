@@ -83,18 +83,39 @@ export default function EditModal({ onClose, data }) {
 							<div className="labelTitle">
 								<p className="infoText">Descrição</p>
 							</div>
-							<div className="descriptionContent">
+							<div className="descriptionContentEdit">
 								<textarea
 									className="displayDescription"
 									readOnly
 									value={
-										data.dsDescicao &&
+										data.dsDescricao &&
 										data.dsDescricao !== ""
 											? data.dsDescricao
 											: "Sem descrição"
 									}
 								>
-									{data.dsDescicao}
+									{data.dsDescricao}
+								</textarea>
+							</div>
+						</div>
+						<div className="descriptionContainer">
+							<div className="labelTitle">
+								<p className="infoText">
+									Justificativa da Decisão
+								</p>
+							</div>
+							<div className="descriptionContentEdit">
+								<textarea
+									className="displayDescription"
+									readOnly
+									value={
+										data.dsJustificativa &&
+										data.dsJustificativa !== ""
+											? data.dsJustificativa
+											: "Sem descrição"
+									}
+								>
+									{data.dsJustificativa}
 								</textarea>
 							</div>
 						</div>

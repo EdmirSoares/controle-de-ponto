@@ -4,7 +4,8 @@ import "./styles.css";
 import { formatDate } from "../../utils/date";
 
 export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
-	const { handleClose } = useApp(onClose);
+	const { handleClose, justification, handleJustification, disabledButton } =
+		useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
@@ -32,7 +33,7 @@ export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
 							<div className="labelTitle">
 								<p className="infoText">Descrição do Motivo</p>
 							</div>
-							<div className="descriptionContent">
+							<div className="descriptionContentAprove">
 								<textarea
 									className="displayDescription"
 									readOnly
@@ -49,18 +50,45 @@ export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
 								</textarea>
 							</div>
 						</div>
+						<div className="descriptionContainer">
+							<div className="labelTitle">
+								<p className="infoText">
+									Justificativa da Decisão
+								</p>
+							</div>
+							<div
+								className="descriptionContent"
+								style={{
+									border:
+										justification && justification === ""
+											? "1px solid red"
+											: "1px solid #e4e4e7",
+								}}
+							>
+								<textarea
+									className="displayDescription"
+									value={justification}
+									onChange={(e) => handleJustification(e)}
+									required
+								>
+									{justification}
+								</textarea>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="modalFooter">
 					<button
 						className="footerButtons rejectButton"
 						onClick={onReject}
+						disabled={justification === "" || disabledButton}
 					>
 						Rejeitar
 					</button>
 					<button
 						className="footerButtons approveBurron"
 						onClick={onConfirm}
+						disabled={justification === "" || disabledButton}
 					>
 						Aprovar
 					</button>

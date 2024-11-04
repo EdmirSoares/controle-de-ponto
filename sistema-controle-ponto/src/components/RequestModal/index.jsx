@@ -31,13 +31,14 @@ export default function RequestModal({ data, onClose }) {
 					<div className="lowerContainer">
 						<div className="descriptionContainer">
 							<div className="labelTitle">
-								<p className="infoText">Descrição</p>
+								<p className="infoText">Motivo</p>
 							</div>
 							<div
 								className="descriptionContent"
 								style={{
-									border:
-										isDescriptionEmpty && "1px solid red",
+									border: isDescriptionEmpty
+										? "1px solid red"
+										: "1px solid #e4e4e7",
 								}}
 							>
 								<textarea

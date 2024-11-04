@@ -4,7 +4,7 @@ import "./styles.css";
 import { formatDate } from "../../utils/date";
 
 export default function ViewModal({ data, onClose, onRequest }) {
-	const { handleClose } = useApp(onClose);
+	const { handleClose, isJustified } = useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
@@ -51,7 +51,7 @@ export default function ViewModal({ data, onClose, onRequest }) {
 							<div className="labelTitle">
 								<p className="infoText">Descrição</p>
 							</div>
-							<div className="descriptionContent">
+							<div className="descriptionContentView">
 								<textarea
 									className="displayDescription"
 									readOnly
@@ -68,6 +68,32 @@ export default function ViewModal({ data, onClose, onRequest }) {
 								</textarea>
 							</div>
 						</div>
+						{isJustified && (
+							<div className="descriptionContainer">
+								<div className="labelTitle">
+									<p className="infoText">
+										Motivo da Aprovação/Reprovação
+									</p>
+								</div>
+								<div className="descriptionContentView">
+									<textarea
+										className="displayDescription"
+										readOnly
+										value={
+											data.dsJustificativa &&
+											data.dsJustificativa !== ""
+												? data.dsJustificativa
+												: "Sem Justificativa"
+										}
+									>
+										{data.dsJustificativa &&
+										data.dsJustificativa !== ""
+											? data.dsJustificativa
+											: "Sem Justificativa"}
+									</textarea>
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 				<div className="modalFooter">

@@ -151,9 +151,9 @@
 	padding: 10px 12px 10px 12px;
 	justify-content: flex-start;
 	align-items: center;
-	background: #ededed;
 	border-radius: 6px;
 	width: 100%;
+	background-color: transparent !important;
 }
 
 .confirmText {

@@ -172,3 +172,26 @@ td {
 textarea {
 	outline: none;
 }
+
+select {
+	width: 100%;
+	padding: 8px;
+	border: none;
+	border-radius: 4px;
+	background-color: #fff;
+	color: var(--text-color-dark);
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	outline: none;
+}
+
+option {
+	padding: 8px;
+	background-color: #fff;
+	color: var(--text-color-dark);
+	font-size: 14px;
+	font-family: var(--font-family);
+	font-weight: 600;
+	appearance: none;
+}
