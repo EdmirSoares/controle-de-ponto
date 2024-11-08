@@ -121,7 +121,6 @@ table {
 .labelHeader,
 .textsColumn,
 .btnActionsColumn {
-	width: 16.66%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -152,8 +151,4 @@ table {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.btnActionsColumn {
-	width: 5%;
 }
