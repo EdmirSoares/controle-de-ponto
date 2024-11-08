@@ -1,16 +1,24 @@
 import { useState } from "react";
 
-export default function useApp() {
+export default function useApp(onEdit, onActive, onInactive, onDelete) {
+	const handleEdit = (item) => {
+		onEdit(item);
+	};
+
+	const handleActive = (item) => {
+		onActive(item);
+	};
+
 	const handleInative = (item) => {
-		console.log("Inativar", item);
-		setMenuVisible(false);
+		onInactive(item);
 	};
 	const handleDelete = (item) => {
-		console.log("Deletar", item);
-		setMenuVisible(false);
+		onDelete(item);
 	};
 
 	return {
+		handleEdit,
+		handleActive,
 		handleInative,
 		handleDelete,
 	};

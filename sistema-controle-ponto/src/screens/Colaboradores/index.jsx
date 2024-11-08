@@ -30,7 +30,10 @@ export default function Colaboradores() {
 				) : (
 					<TableEmployees
 						data={dataEmployees}
-						onView={() => console.log("menu")}
+						onEdit={(item) => console.log("Editar", item)}
+						onActive={(item) => console.log("Ativar", item)}
+						onInactive={(item) => console.log("Inativar", item)}
+						onDelete={(item) => console.log("Deletar", item)}
 					/>
 				)}
 			</RightAreaScreen>

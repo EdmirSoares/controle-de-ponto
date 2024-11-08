@@ -1,18 +1,15 @@
-import {
-	AlertOctagon,
-	CheckCircle,
-	Edit3,
-	MoreHorizontal,
-	UserX,
-} from "react-feather";
+import { AlertOctagon, CheckCircle, Edit3, UserX } from "react-feather";
 import "./styles.css";
 import { Fragment } from "react";
 import StatusBoolean from "../StatusBoolean";
-import useApp from "./useApp";
 
-export default function TableEmployees({ data, onView }) {
-	const { handleInative, handleDelete } = useApp();
-
+export default function TableEmployees({
+	data,
+	onEdit,
+	onActive,
+	onInactive,
+	onDelete,
+}) {
 	return (
 		<div className="table-container">
 			<div className="table-wrapper">
@@ -55,7 +52,7 @@ export default function TableEmployees({ data, onView }) {
 										<Edit3
 											size={20}
 											className="btnTable"
-											onClick={() => onView(item)}
+											onClick={() => onEdit(item)}
 										/>
 										{item.flAtivo === 0 ? (
 											<CheckCircle
@@ -63,9 +60,7 @@ export default function TableEmployees({ data, onView }) {
 												className="btnTable"
 												color="var(--green-theme-color)"
 												onClick={() =>
-													handleInative(
-														item.idFuncionario
-													)
+													onActive(item.idFuncionario)
 												}
 											/>
 										) : (
@@ -74,7 +69,7 @@ export default function TableEmployees({ data, onView }) {
 												className="btnTable"
 												color="var(--yellow-theme-color)"
 												onClick={() =>
-													handleInative(
+													onInactive(
 														item.idFuncionario
 													)
 												}
@@ -84,7 +79,7 @@ export default function TableEmployees({ data, onView }) {
 											size={20}
 											className="btnTable"
 											color="var(--red-theme-color)"
-											onClick={() => handleDelete(item)}
+											onClick={() => onDelete(item)}
 										/>
 									</td>
 								</tr>
