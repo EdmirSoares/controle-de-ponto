@@ -23,7 +23,7 @@ export default function Colaboradores() {
 				subTitle="Atualize as informações dos colaboradores em um só lugar"
 				positiveButtonLabel={"Cadastrar"}
 				onClickPositiveButton={handleOpenRegisterEmployee}
-				onClickReload={() => getDataEmployees()}
+				onClickReload={getDataEmployees}
 			>
 				{loading ? (
 					<p>Carregando...</p>

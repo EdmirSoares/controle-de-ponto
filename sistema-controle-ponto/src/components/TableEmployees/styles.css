@@ -98,7 +98,7 @@ table {
 	overflow-y: auto;
 }
 
-.btnEdit {
+.btnTable {
 	border-radius: 4px;
 	padding: 2px;
 	justify-content: space-between;
@@ -106,7 +106,7 @@ table {
 	display: inline-flex;
 }
 
-.btnEdit:hover {
+.btnTable:hover {
 	background-color: #efefef;
 	cursor: pointer;
 	transition: background-color 0.5s ease;
@@ -154,6 +154,10 @@ table {
 	justify-content: center;
 }
 
-.btnActionsColumn {
-	width: 5%;
+.ColumnActions {
+	width: 8%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 4px;
 }
