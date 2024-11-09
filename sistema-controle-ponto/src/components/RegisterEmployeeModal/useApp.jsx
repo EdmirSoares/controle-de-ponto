@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { getUserDataLocalStorage } from "../../utils/user";
-import { createEmployee } from "../../utils/api";
+import { createEmployee, updateEmployee } from "../../utils/api";
 import { AxiosError } from "axios";
 
 export default function useApp(onClose, data) {
@@ -26,6 +26,9 @@ export default function useApp(onClose, data) {
 
 	const handleConfirm = async () => {
 		const formData = {
+			...(data && data.idFuncionario
+				? { idFuncionario: data.idFuncionario }
+				: {}),
 			...registerData,
 		};
 
@@ -47,6 +50,13 @@ export default function useApp(onClose, data) {
 		}
 
 		try {
+			if (data && data.idFuncionario) {
+				await updateEmployee(formData);
+				console.log(formData);
+				toast.success("Funcionário atualizado com sucesso!");
+				handleClose();
+				return;
+			}
 			await createEmployee(formData);
 			toast.success("Funcionário cadastrado com sucesso!");
 			handleClose();
