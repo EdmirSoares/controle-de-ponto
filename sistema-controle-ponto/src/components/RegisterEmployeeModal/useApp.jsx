@@ -1,52 +1,73 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { getUserDataLocalStorage } from "../../utils/user";
+import { createEmployee } from "../../utils/api";
+import { AxiosError } from "axios";
 
 export default function useApp(onClose) {
 	const [registerData, setRegisterData] = useState({
 		nmFuncionario: "",
 		dsEmail: "",
 		dsFuncao: "",
-		flAtivo: false,
+		flAtivo: true,
 		isAdmin: false,
 	});
 	const [alertField, setAlertField] = useState(true);
 	const [user, setUser] = useState({});
 
 	const handlerChangeInputs = (e) => {
-		const { name, value } = e.target;
-		setRegisterData({ ...registerData, [name]: value });
+		const { name, value, type, checked } = e.target;
+		setRegisterData((prevData) => ({
+			...prevData,
+			[name]: type === "checkbox" ? checked : value,
+		}));
 		console.log(registerData);
 	};
 
-	const handleConfirm = () => {
+	const handleConfirm = async () => {
 		const formData = {
 			...registerData,
 		};
 
-		/* if (!formData.nmFuncionario) {
-			setAlertField(true);
+		let allFieldsFilled = true;
+		Object.values(formData).forEach((value) => {
+			if (value === "") {
+				allFieldsFilled = false;
+			}
+		});
+
+		if (!allFieldsFilled) {
+			toast.error(`Preencha todos os campos obrigatórios!`);
 			return;
-		} */
+		}
+
+		if (formData.dsFuncao === "Colaborador" && formData.isAdmin) {
+			toast.error(`Colaboradores não podem ser administradores!`);
+			return;
+		}
 
 		try {
-			console.log(formData);
-			toast.success(`Solicitação enviada com sucesso!`);
+			await createEmployee(formData);
+			toast.success("Funcionário cadastrado com sucesso!");
+			handleClose();
 		} catch (error) {
+			const errorMessage =
+				error.response?.data?.error || "Erro ao cadastrar funcionário";
+			toast.error(errorMessage);
 			console.error(error);
 		}
 	};
 
 	const handleClose = () => {
 		onClose();
+		setAlertField(false);
 		setRegisterData({
 			nmFuncionario: "",
 			dsEmail: "",
 			dsFuncao: "",
-			flAtivo: false,
+			flAtivo: true,
 			isAdmin: false,
 		});
-		setAlertField(false);
 	};
 
 	useEffect(() => {

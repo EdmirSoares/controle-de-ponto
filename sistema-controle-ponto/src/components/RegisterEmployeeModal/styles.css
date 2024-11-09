@@ -127,6 +127,14 @@
 	display: inline-flex;
 }
 
+.rowContainer {
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	display: inline-flex;
+	gap: 16px;
+}
+
 .displayContent {
 	display: flex;
 	padding: 10px 12px 10px 12px;

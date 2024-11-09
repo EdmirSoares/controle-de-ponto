@@ -1,5 +1,7 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { getEmployees } from "../../utils/api";
 
 export default function useApp() {
 	const [loading, setLoading] = useState(false);
@@ -10,10 +12,9 @@ export default function useApp() {
 	const getDataEmployees = async () => {
 		setLoading(true);
 		try {
-			const response = await fetch("http://localhost:3000/colaboradores");
-			const data = await response.json();
+			const response = await getEmployees();
 
-			setDataEmployees(data.data);
+			setDataEmployees(response.data);
 			setLoading(false);
 		} catch (error) {
 			console.error(error);

@@ -4,6 +4,7 @@ import RightAreaScreen from "../../components/RightAreaScreen";
 import TableEmployees from "../../components/TableEmployees";
 import useApp from "./useApp";
 import RegisterEmployeeModal from "../../components/RegisterEmployeeModal";
+import { useEffect } from "react";
 
 export default function Colaboradores() {
 	const {
@@ -14,6 +15,10 @@ export default function Colaboradores() {
 		handleOpenRegisterEmployee,
 		handleCloseRegisterEmployee,
 	} = useApp();
+
+	useEffect(() => {
+		console.log(dataEmployees);
+	}, [dataEmployees]);
 
 	return (
 		<div className="container">

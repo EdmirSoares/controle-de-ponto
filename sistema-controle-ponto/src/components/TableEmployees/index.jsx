@@ -13,7 +13,7 @@ export default function TableEmployees({
 	return (
 		<div className="table-container">
 			<div className="table-wrapper">
-				{data && data.length > 0 ? (
+				{data && data?.length > 0 ? (
 					<table>
 						<thead className="tableHeader">
 							<tr className="columnsHeader">

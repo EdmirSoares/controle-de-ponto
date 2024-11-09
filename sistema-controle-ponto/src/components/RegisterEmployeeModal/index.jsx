@@ -30,17 +30,14 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 					<div className="lowerContainer">
 						<div className="descriptionContainer">
 							<div className="labelTitle">
-								<p className="infoText">Nome</p>
+								<p className="infoText">
+									Nome <span className="requiredSpan">*</span>
+								</p>
 							</div>
 							<div
 								className="descriptionContentInput"
 								style={{
-									border:
-										registerData.nmFuncionario &&
-										registerData.nmFuncionario === "" &&
-										alertField
-											? "1px solid red"
-											: "1px solid #e4e4e7",
+									border: "1px solid #e4e4e7",
 								}}
 							>
 								<input
@@ -64,51 +61,40 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 						</div>
 						<div className="descriptionContainer">
 							<div className="labelTitle">
-								<p className="infoText">Email</p>
+								<p className="infoText">
+									Email{" "}
+									<span className="requiredSpan">*</span>
+								</p>
 							</div>
 							<div
 								className="descriptionContentInput"
 								style={{
-									border:
-										registerData.dsEmail &&
-										registerData.dsEmail === "" &&
-										alertField
-											? "1px solid red"
-											: "1px solid #e4e4e7",
+									border: "1px solid #e4e4e7",
 								}}
 							>
 								<input
 									area-label="Nome"
 									type={"text"}
 									className="displayDescription"
-									placeholder="Nome"
+									placeholder="Email"
 									name="dsEmail"
 									value={registerData.dsEmail}
 									onChange={(e) => handlerChangeInputs(e)}
 									maxLength={100}
 								/>
 							</div>
-							{/* {alertField &&
-								registerData.nmFuncionario &&
-								registerData.nmFuncionario === "" && (
-									<p className="alertInfoText">
-										* Informe um nome
-									</p>
-								)} */}
 						</div>
 						<div className="descriptionContainer">
 							<div className="labelTitle">
-								<p className="infoText">Função</p>
+								<p className="infoText">
+									Função{" "}
+									<span className="requiredSpan">*</span>
+								</p>
 							</div>
 							<div
 								className="descriptionContentInput"
 								style={{
-									border:
-										registerData.dsFuncao &&
-										registerData.dsFuncao === "" &&
-										alertField
-											? "1px solid red"
-											: "1px solid #e4e4e7",
+									border: "1px solid #e4e4e7",
 								}}
 							>
 								<select
@@ -124,17 +110,18 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 									</option>
 								</select>
 							</div>
-							{/* {alertField &&
-								registerData.nmFuncionario &&
-								registerData.nmFuncionario === "" && (
-									<p className="alertInfoText">
-										* Informe um nome
-									</p>
-								)} */}
 						</div>
 						<div className="descriptionContainer">
-							<div className="labelTitle">
-								<p className="infoText">Função</p>
+							<div className="rowContainer">
+								<input
+									className="inputCheckbox"
+									type="checkbox"
+									name="isAdmin"
+									value={registerData.isAdmin}
+									checked={registerData.isAdmin}
+									onChange={(e) => handlerChangeInputs(e)}
+								/>
+								<p className="infoText">Supervisor?</p>
 							</div>
 						</div>
 					</div>
