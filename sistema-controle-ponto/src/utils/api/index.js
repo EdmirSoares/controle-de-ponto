@@ -20,3 +20,10 @@ export const updateEmployee = async (data) => {
 	);
 	return response.data;
 };
+
+export const deleteEmployee = async (idFuncionario) => {
+    const response = await axios.delete('http://localhost:3000/colaboradores/', {
+        data: { idFuncionario }
+    });
+    return response.data;
+}
