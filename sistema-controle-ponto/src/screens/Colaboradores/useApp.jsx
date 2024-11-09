@@ -6,6 +6,7 @@ import { getEmployees } from "../../utils/api";
 export default function useApp() {
 	const [loading, setLoading] = useState(false);
 	const [dataEmployees, setDataEmployees] = useState([]);
+	const [dataRegisterEmployee, setDataRegisterEmployee] = useState({});
 
 	const [modalRegisterEmployee, setModalRegisterEmployee] = useState(false);
 
@@ -24,10 +25,12 @@ export default function useApp() {
 
 	const handleOpenRegisterEmployee = (item) => {
 		setModalRegisterEmployee(true);
+		setDataRegisterEmployee(item);
 	};
 
 	const handleCloseRegisterEmployee = () => {
 		setModalRegisterEmployee(false);
+		getDataEmployees();
 	};
 
 	useEffect(() => {
@@ -41,5 +44,6 @@ export default function useApp() {
 		getDataEmployees,
 		handleOpenRegisterEmployee,
 		handleCloseRegisterEmployee,
+		dataRegisterEmployee,
 	};
 }

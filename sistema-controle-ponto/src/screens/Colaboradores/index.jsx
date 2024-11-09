@@ -10,15 +10,12 @@ export default function Colaboradores() {
 	const {
 		loading,
 		dataEmployees,
+		dataRegisterEmployee,
 		modalRegisterEmployee,
 		getDataEmployees,
 		handleOpenRegisterEmployee,
 		handleCloseRegisterEmployee,
 	} = useApp();
-
-	useEffect(() => {
-		console.log(dataEmployees);
-	}, [dataEmployees]);
 
 	return (
 		<div className="container">
@@ -35,7 +32,7 @@ export default function Colaboradores() {
 				) : (
 					<TableEmployees
 						data={dataEmployees}
-						onEdit={(item) => console.log("Editar", item)}
+						onEdit={(item) => handleOpenRegisterEmployee(item)}
 						onActive={(item) => console.log("Ativar", item)}
 						onInactive={(item) => console.log("Inativar", item)}
 						onDelete={(item) => console.log("Deletar", item)}
@@ -43,7 +40,10 @@ export default function Colaboradores() {
 				)}
 			</RightAreaScreen>
 			{modalRegisterEmployee && (
-				<RegisterEmployeeModal onClose={handleCloseRegisterEmployee} />
+				<RegisterEmployeeModal
+					data={dataRegisterEmployee}
+					onClose={handleCloseRegisterEmployee}
+				/>
 			)}
 		</div>
 	);

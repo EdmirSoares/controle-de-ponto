@@ -2,6 +2,7 @@ import React from "react";
 import useApp from "./useApp";
 import "./styles.css";
 import { formatDate } from "../../utils/date";
+import { useEffect } from "react";
 
 export default function RegisterEmployeeModal({ data, onClose }) {
 	const {
@@ -51,13 +52,6 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 									maxLength={100}
 								/>
 							</div>
-							{/* {alertField &&
-								registerData.nmFuncionario &&
-								registerData.nmFuncionario === "" && (
-									<p className="alertInfoText">
-										* Informe um nome
-									</p>
-								)} */}
 						</div>
 						<div className="descriptionContainer">
 							<div className="labelTitle">

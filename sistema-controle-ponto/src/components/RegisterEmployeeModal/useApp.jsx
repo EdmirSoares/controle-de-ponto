@@ -4,7 +4,7 @@ import { getUserDataLocalStorage } from "../../utils/user";
 import { createEmployee } from "../../utils/api";
 import { AxiosError } from "axios";
 
-export default function useApp(onClose) {
+export default function useApp(onClose, data) {
 	const [registerData, setRegisterData] = useState({
 		nmFuncionario: "",
 		dsEmail: "",
@@ -81,6 +81,18 @@ export default function useApp(onClose) {
 			setAlertField(false);
 		}
 	}, [registerData.nmFuncionario]);
+
+	useEffect(() => {
+		if (data && data.idFuncionario) {
+			setRegisterData({
+				nmFuncionario: data.nmFuncionario,
+				dsEmail: data.dsEmail,
+				dsFuncao: data.dsFuncao,
+				flAtivo: data.flAtivo,
+				isAdmin: data.isAdmin,
+			});
+		}
+	}, [data]);
 
 	return {
 		handleConfirm,
