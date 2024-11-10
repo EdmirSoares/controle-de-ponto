@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { postLogin } from "../utils/api/index";
 
 const AuthContext = createContext();
 
@@ -7,6 +8,7 @@ function AuthProvider({ children }) {
 	const [loading, setLoading] = useState(true);
 	const [loadingSign, setLoadingSign] = useState(false);
 	const [isLogged, setIsLogged] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
 
 	useEffect(() => {
 		try {
@@ -14,6 +16,7 @@ function AuthProvider({ children }) {
 			if (user) {
 				setUser(user);
 				setIsLogged(true);
+				setIsAdmin(user.isAdmin !== 0);
 			} else {
 				setIsLogged(false);
 			}
@@ -25,12 +28,14 @@ function AuthProvider({ children }) {
 		}
 	}, []);
 
-	const signIn = async (dataUser) => {
+	const signIn = async (nmFuncionario, dsEmail) => {
 		setLoadingSign(true);
 		try {
-			//const response = await postLogin();
-			setLocalStorage(dataUser);
-			setUser(dataUser);
+			const response = await postLogin(nmFuncionario, dsEmail);
+
+			setLocalStorage(response);
+			setUser(response);
+			setIsAdmin(response.isAdmin !== 0);
 			window.location.reload();
 		} catch (error) {
 			setIsLogged(false);
@@ -76,6 +81,7 @@ function AuthProvider({ children }) {
 				setIsLogged,
 				signIn,
 				signOut,
+				isAdmin,
 			}}
 		>
 			{children}

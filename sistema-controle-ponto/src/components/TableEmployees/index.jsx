@@ -59,9 +59,7 @@ export default function TableEmployees({
 												size={20}
 												className="btnTable"
 												color="var(--green-theme-color)"
-												onClick={() =>
-													onActive(item.idFuncionario)
-												}
+												onClick={() => onActive(item)}
 											/>
 										) : (
 											<AlertOctagon

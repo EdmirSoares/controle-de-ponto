@@ -65,6 +65,7 @@ h1 {
 	font-weight: var(--heading-font-weight);
 	color: var(--text-color);
 	font-family: var(--font-family);
+	text-transform: capitalize;
 }
 
 a {

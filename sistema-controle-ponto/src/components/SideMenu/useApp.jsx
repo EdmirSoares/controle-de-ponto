@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/auth";
+import { getUserDataLocalStorage } from "../../utils/user/index";
 
 export default function useApp() {
 	const [activeScreen, setActiveScreen] = useState("Dashboard");
+	const [infoUser, setInfoUser] = useState(null);
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -34,5 +36,10 @@ export default function useApp() {
 		}
 	}, [location, activeScreen]);
 
-	return { handleNavigation, signOut };
+	useEffect(() => {
+		const data = getUserDataLocalStorage();
+		setInfoUser(data);
+	}, []);
+
+	return { handleNavigation, signOut, infoUser };
 }

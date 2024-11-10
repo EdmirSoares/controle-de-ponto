@@ -5,29 +5,30 @@ import { toast } from "sonner";
 export default function useApp() {
 	const { signIn } = useContext(AuthContext);
 
-	const [capturedDataLogin, setCapturedDataLogin] = useState({
-		name: "",
-		email: "",
+	const [dataLogin, setDataLogin] = useState({
+		nmFuncionario: "",
+		dsEmail: "",
 	});
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
-		setCapturedDataLogin((prevState) => ({
+		setDataLogin((prevState) => ({
 			...prevState,
 			[name]: value,
 		}));
 	};
 
 	const handlerLogin = () => {
-		if (capturedDataLogin.email === "" || capturedDataLogin.name === "") {
+		if (dataLogin.nmFuncionario === "" || dataLogin.dsEmail === "") {
 			toast.error("Preencha todos os campos para continuar");
 			return;
 		}
-		signIn(capturedDataLogin);
+		console.log("entrou");
+		signIn(dataLogin.nmFuncionario, dataLogin.dsEmail);
 	};
 
 	return {
-		capturedDataLogin,
+		dataLogin,
 		handleInputChange,
 		handlerLogin,
 	};

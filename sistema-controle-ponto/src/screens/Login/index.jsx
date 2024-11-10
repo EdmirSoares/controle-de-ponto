@@ -2,7 +2,7 @@ import "./styles.css";
 import useApp from "./useApp";
 
 export default function Login() {
-	const { capturedDataLogin, handleInputChange, handlerLogin } = useApp();
+	const { dataLogin, handleInputChange, handlerLogin } = useApp();
 
 	return (
 		<div className="containerLogin">
@@ -21,9 +21,9 @@ export default function Login() {
 						<label className="labelnput">Nome</label>
 						<input
 							type="text"
-							name="name"
+							name="nmFuncionario"
 							placeholder="Nome"
-							value={capturedDataLogin.password}
+							value={dataLogin.nmFuncionario}
 							onChange={(e) => handleInputChange(e)}
 						/>
 					</div>
@@ -32,9 +32,9 @@ export default function Login() {
 						<label className="labelnput">Email</label>
 						<input
 							type="text"
-							name="email"
+							name="dsEmail"
 							placeholder="Email"
-							value={capturedDataLogin.email}
+							value={dataLogin.dsEmail}
 							onChange={(e) => handleInputChange(e)}
 						/>
 					</div>

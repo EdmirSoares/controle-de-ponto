@@ -1,19 +1,20 @@
 import "./styles.css";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth";
 import { LogOut } from "react-feather";
 import useApp from "./useApp";
+import User_b from "../../assets/images/User_b.png";
 
 export default function SideMenu() {
-	const { handleNavigation, signOut } = useApp();
+	const { handleNavigation, signOut, infoUser } = useApp();
+	const { isAdmin } = useContext(AuthContext);
 	return (
 		<div className="containerSideMenu">
 			<div className="headerContainer">
-				<img
-					className="imageContainer"
-					src="https://wac-cdn.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg?cdnVersion=2349"
-				/>
+				<img className="imageContainer" src={User_b} />
 				<div className="infoContainer">
-					<h1>{"Alex"}</h1>
-					<p>{"alex.souza@email.com"}</p>
+					<h1>{infoUser?.nmFuncionario}</h1>
+					<p>{infoUser?.dsEmail}</p>
 				</div>
 			</div>
 			<div className="navigationContainer">
@@ -41,14 +42,19 @@ export default function SideMenu() {
 						Solicitações
 					</p>
 				</div>
-				<div
-					className="menuItem"
-					onClick={() => handleNavigation("/colaboradores")}
-				>
-					<p className="textNavigation" data-screen="/colaboradores">
-						Colaboradores
-					</p>
-				</div>
+				{isAdmin && (
+					<div
+						className="menuItem"
+						onClick={() => handleNavigation("/colaboradores")}
+					>
+						<p
+							className="textNavigation"
+							data-screen="/colaboradores"
+						>
+							Colaboradores
+						</p>
+					</div>
+				)}
 			</div>
 			<div className="footerContainer">
 				<p className="textNavigation" onClick={signOut}>

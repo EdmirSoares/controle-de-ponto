@@ -14,12 +14,17 @@ export default function Colaboradores() {
 		dataRegisterEmployee,
 		modalRegisterEmployee,
 		modalDeleteEmployee,
+		modalStatusEmployee,
+		statusEmployee,
 		getDataEmployees,
 		handleOpenRegisterEmployee,
 		handleCloseRegisterEmployee,
 		handleOpenDeleteEmployee,
 		handleCloseDeleteEmployee,
 		handleDeleteEmployee,
+		handleOpenStatusEmployee,
+		handleCloseStatusEmployee,
+		handleUpdateStatusEmployee,
 	} = useApp();
 
 	return (
@@ -38,8 +43,8 @@ export default function Colaboradores() {
 					<TableEmployees
 						data={dataEmployees}
 						onEdit={(item) => handleOpenRegisterEmployee(item)}
-						onActive={(item) => console.log("Ativar", item)}
-						onInactive={(item) => console.log("Inativar", item)}
+						onActive={(item) => handleOpenStatusEmployee(item)}
+						onInactive={(item) => handleOpenStatusEmployee(item)}
 						onDelete={(item) => handleOpenDeleteEmployee(item)}
 					/>
 				)}
@@ -57,6 +62,19 @@ export default function Colaboradores() {
 					mainText="Confirmar desligamento?"
 					onClose={handleCloseDeleteEmployee}
 					onConfirm={handleDeleteEmployee}
+				/>
+			)}
+			{modalStatusEmployee && (
+				<GenericConfirmModal
+					title={
+						statusEmployee === 0
+							? "Desativar Colaborador"
+							: "Ativar Colaborador"
+					}
+					subtitle="Alterar Status do colaborador"
+					mainText="Deseja Ativar este Colaborador?"
+					onClose={handleCloseStatusEmployee}
+					onConfirm={handleUpdateStatusEmployee}
 				/>
 			)}
 		</div>
