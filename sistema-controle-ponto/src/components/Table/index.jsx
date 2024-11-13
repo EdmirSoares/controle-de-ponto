@@ -1,7 +1,7 @@
-import { Edit3, Eye } from "react-feather";
-import StatusTable from "../StatusTable";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
+import { Edit3, Eye } from 'react-feather';
+import StatusTable from '../StatusTable';
+import './styles.css';
+import { formatDate } from '../../utils/date';
 
 export default function Table({ data, onEdit, onView }) {
 	return (
@@ -12,8 +12,8 @@ export default function Table({ data, onEdit, onView }) {
 						<tr className="columnsHeader">
 							<th className="labelHeaderNoSize">ID</th>
 							<th className="labelHeader">Colaborador</th>
-							<th className="labelHeader">Email</th>
-							<th className="labelHeader">Ultimo Ponto</th>
+							<th className="labelHeader">Data e Hora</th>
+							<th className="labelHeader">Tipo</th>
 							<th className="labelHeader">Status</th>
 							<th className="labelHeaderNoSize btnActionsColumn">
 								Ações
@@ -23,23 +23,23 @@ export default function Table({ data, onEdit, onView }) {
 					<tbody className="tableBody">
 						{data.map((item, index) => (
 							<tr
-								key={`${item.idFuncionario}-${index}`}
+								key={`${item.idPonto}-${index}`}
 								className="columnsBody"
 							>
-								<td>#{item.idFuncionario}</td>
+								<td>#{item.idPonto}</td>
 								<td className="textsColumn">
 									{item.nmFuncionario}
 								</td>
-								<td className="textsColumn">{item.dsEmail}</td>
 								<td className="textsColumn">
-									{formatDate(item.dtPonto)}
+									{formatDate(item.dataHora)}
 								</td>
+								<td className="textsColumn">{item.tipo}</td>
 								<td className="textsColumn">
-									<StatusTable statusText={item.tpStatus} />
+									<StatusTable statusText={item.status} />
 								</td>
 								<td className="btnActionsColumn">
 									{item.tpStatus &&
-									item.tpStatus === "Disponível" ? (
+									item.tpStatus === 'Disponível' ? (
 										<Edit3
 											size={18}
 											className="btnEdit"

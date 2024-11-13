@@ -1,14 +1,14 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
+import { formatDate } from '../../utils/date';
 
 export default function RequestModal({ data, onClose }) {
 	const {
 		handleConfirm,
 		handleClose,
-		description,
-		setDescription,
+		motive,
+		setMotive,
 		disabledButton,
 		isDescriptionEmpty,
 	} = useApp(onClose, data);
@@ -17,7 +17,7 @@ export default function RequestModal({ data, onClose }) {
 		<div className="modalContainer" onClick={handleClose}>
 			<div
 				className="modalContentRequest"
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
@@ -31,25 +31,25 @@ export default function RequestModal({ data, onClose }) {
 					<div className="lowerContainer">
 						<div className="descriptionContainer">
 							<div className="labelTitle">
-								<p className="infoText">Motivo</p>
+								<p className="infoText">Justificativa</p>
 							</div>
 							<div
 								className="descriptionContent"
 								style={{
 									border: isDescriptionEmpty
-										? "1px solid red"
-										: "1px solid #e4e4e7",
+										? '1px solid red'
+										: '1px solid #e4e4e7',
 								}}
 							>
 								<textarea
 									className="displayDescription"
-									value={description}
-									onChange={(e) => {
-										setDescription(e.target.value);
+									value={motive}
+									onChange={e => {
+										setMotive(e.target.value);
 									}}
 									required
 								>
-									{description}
+									{motive}
 								</textarea>
 							</div>
 							{isDescriptionEmpty && (

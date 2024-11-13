@@ -45,7 +45,7 @@ export default function useApp(onClose, data) {
 		}
 
 		if (formData.dsFuncao === "Colaborador" && formData.isAdmin) {
-			toast.error(`Colaboradores não podem ser administradores!`);
+			toast.error(`Colaboradores não podem ser supervisores!`);
 			return;
 		}
 

@@ -1,7 +1,7 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
+import { formatDate } from '../../utils/date';
 
 export default function ViewModal({ data, onClose, onRequest }) {
 	const { handleClose, isJustified } = useApp(onClose, data);
@@ -10,7 +10,7 @@ export default function ViewModal({ data, onClose, onRequest }) {
 		<div className="modalContainer" onClick={handleClose}>
 			<div
 				className="modalContentView"
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
@@ -19,7 +19,7 @@ export default function ViewModal({ data, onClose, onRequest }) {
 							Confira todos os dados dos eu registro!
 						</p>
 					</div>
-					{data.tpStatus === "Confirmado" && (
+					{data.status === 'aprovado' && (
 						<button className="footerButtons" onClick={onRequest}>
 							Solicitar Edição
 						</button>
@@ -33,7 +33,7 @@ export default function ViewModal({ data, onClose, onRequest }) {
 							</div>
 							<div className="displayContent">
 								<p className="displayText">
-									{formatDate(data.dtPonto)}
+									{formatDate(data.dataHora)}
 								</p>
 							</div>
 						</div>
@@ -42,7 +42,7 @@ export default function ViewModal({ data, onClose, onRequest }) {
 								<p className="infoText">Status</p>
 							</div>
 							<div className="displayContent">
-								<p className="displayText">{data.tpStatus}</p>
+								<p className="displayText">{data.status}</p>
 							</div>
 						</div>
 					</div>
@@ -56,15 +56,14 @@ export default function ViewModal({ data, onClose, onRequest }) {
 									className="displayDescription"
 									readOnly
 									value={
-										data.dsDescricao &&
-										data.dsDescricao !== ""
-											? data.dsDescricao
-											: "Sem descrição"
+										data.dsMotivo && data.dsMotivo !== ''
+											? data.dsMotivo
+											: 'Sem descrição'
 									}
 								>
-									{data.dsDescricao && data.dsDescricao !== ""
-										? data.dsDescricao
-										: "Sem descrição"}
+									{data.dsMotivo && data.dsMotivo !== ''
+										? data.dsMotivo
+										: 'Sem descrição'}
 								</textarea>
 							</div>
 						</div>
@@ -81,15 +80,15 @@ export default function ViewModal({ data, onClose, onRequest }) {
 										readOnly
 										value={
 											data.dsJustificativa &&
-											data.dsJustificativa !== ""
+											data.dsJustificativa !== ''
 												? data.dsJustificativa
-												: "Sem Justificativa"
+												: 'Sem Justificativa'
 										}
 									>
 										{data.dsJustificativa &&
-										data.dsJustificativa !== ""
+										data.dsJustificativa !== ''
 											? data.dsJustificativa
-											: "Sem Justificativa"}
+											: 'Sem Justificativa'}
 									</textarea>
 								</div>
 							</div>

@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
-import { getUserDataLocalStorage } from "../../utils/user";
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
+import { getUserDataLocalStorage } from '../../utils/user';
+import { requestEdit } from '../../utils/api';
 
-export default function useApp(onClose) {
-	const [dateTime, setDateTime] = useState("");
-	const [description, setDescription] = useState("");
+export default function useApp(onClose, data) {
+	const [dateTime, setDateTime] = useState('');
+	const [motive, setMotive] = useState('');
 	const [disabledButton, setDisabledButton] = useState(true);
 	const [isDescriptionEmpty, setIsDescriptionEmpty] = useState(false);
 	const [user, setUser] = useState({});
@@ -13,24 +14,25 @@ export default function useApp(onClose) {
 		const date = new Date();
 		const timeZoneOffset = -3;
 		const localDate = new Date(
-			date.getTime() + timeZoneOffset * 60 * 60 * 1000
+			date.getTime() + timeZoneOffset * 60 * 60 * 1000,
 		);
 		return localDate;
 	};
 
-	const handleConfirm = () => {
+	const handleConfirm = async () => {
 		const formData = {
-			userName: user.name,
-			userEmail: user.email,
-			date: localDate().toISOString(),
-			dsDescricao: description,
+			idPonto: data.idPonto,
+			dsMotivo: motive,
 		};
 
 		try {
-			if (!description) {
+			if (!motive) {
 				setIsDescriptionEmpty(true);
 				return;
 			}
+
+			await requestEdit(formData);
+			console.log(formData);
 
 			handleClose();
 			toast.success(`Solicitação enviada com sucesso!`);
@@ -41,9 +43,9 @@ export default function useApp(onClose) {
 
 	const handleClose = () => {
 		onClose();
-		setDateTime("");
+		setDateTime('');
 		setUser({});
-		setDescription("");
+		setMotive('');
 		setIsDescriptionEmpty(false);
 	};
 
@@ -52,21 +54,21 @@ export default function useApp(onClose) {
 	}, []);
 
 	useEffect(() => {
-		if (!description) {
+		if (!motive) {
 			setDisabledButton(true);
 			return;
 		}
-		if (description.length > 0) {
+		if (motive.length > 0) {
 			setIsDescriptionEmpty(false);
 		}
-	}, [description]);
+	}, [motive]);
 
 	return {
 		dateTime,
 		handleConfirm,
 		handleClose,
-		description,
-		setDescription,
+		motive,
+		setMotive,
 		disabledButton,
 		isDescriptionEmpty,
 	};

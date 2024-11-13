@@ -47,11 +47,13 @@ export default function useApp() {
 
 	const handleUpdateStatusEmployee = async () => {
 		try {
+			console.log(statusEmployee);
 			const response = await updateStatusEmployee(
 				statusEmployee.idFuncionario,
-				statusEmployee.flAtivo === 0 ? true : false
+				statusEmployee.flAtivo === 0 ? 1 : 0
 			);
 			toast.success(response.message);
+			handleCloseStatusEmployee();
 		} catch (error) {
 			const errorMessage =
 				error.response?.data?.error || "Erro ao alterar status";

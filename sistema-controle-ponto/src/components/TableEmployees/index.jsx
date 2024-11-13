@@ -66,11 +66,7 @@ export default function TableEmployees({
 												size={20}
 												className="btnTable"
 												color="var(--yellow-theme-color)"
-												onClick={() =>
-													onInactive(
-														item.idFuncionario
-													)
-												}
+												onClick={() => onInactive(item)}
 											/>
 										)}
 										<UserX
