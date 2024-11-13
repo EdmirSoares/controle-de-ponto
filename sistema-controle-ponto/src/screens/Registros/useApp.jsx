@@ -18,8 +18,8 @@ export default function useApp() {
 	const getDataRegisters = async () => {
 		try {
 			const response = await getRegistros();
-			console.log(response);
 			setDataRegisters(response.data);
+
 			setLoading(false);
 			toast.success('Registros carregados com sucesso');
 		} catch (error) {

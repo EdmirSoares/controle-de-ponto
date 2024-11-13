@@ -1,8 +1,8 @@
-import { Eye } from "react-feather";
-import StatusTable from "../StatusTable";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
-import { Fragment } from "react";
+import { Eye } from 'react-feather';
+import StatusTable from '../StatusTable';
+import './styles.css';
+import { formatDate } from '../../utils/date';
+import { Fragment } from 'react';
 
 export default function TableRequest({ data, onView }) {
 	return (
@@ -13,10 +13,8 @@ export default function TableRequest({ data, onView }) {
 						<thead className="tableHeader">
 							<tr className="columnsHeader">
 								<th className="labelHeader">Colaborador</th>
-								<th className="labelHeader">Email</th>
-								<th className="labelHeader">
-									Data Solicitação
-								</th>
+								<th className="labelHeader">Motivo</th>
+								<th className="labelHeader">Data do Ponto</th>
 								<th className="labelHeader">Status</th>
 								<th className="labelHeaderNoSize btnActionsColumn">
 									Ações
@@ -26,22 +24,20 @@ export default function TableRequest({ data, onView }) {
 						<tbody className="tableBody">
 							{data.map((item, index) => (
 								<tr
-									key={`${item.idFuncionario}-${index}`}
+									key={`${item.idPonto}-${index}`}
 									className="columnsBody"
 								>
 									<td className="textsColumn">
 										{item.nmFuncionario}
 									</td>
 									<td className="textsColumn">
-										{item.dsEmail}
+										{item.dsMotivo}
 									</td>
 									<td className="textsColumn">
-										{formatDate(item.dtPonto)}
+										{formatDate(item.dataHora)}
 									</td>
 									<td className="textsColumn">
-										<StatusTable
-											statusText={item.tpStatus}
-										/>
+										<StatusTable statusText={item.status} />
 									</td>
 									<td className="btnActionsColumn">
 										<Eye

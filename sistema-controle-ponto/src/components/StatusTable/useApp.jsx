@@ -29,9 +29,9 @@ export default function useApp() {
 				backgroundColor: 'rgba(66, 26, 209, 0.10)',
 			};
 		}
-		if (statusText === 'disponível') {
+		if (statusText === 'pendente') {
 			return {
-				text: 'Disponível',
+				text: 'Pendente',
 				color: '#1aa0d1',
 				backgroundColor: 'rgba(26, 160, 290, 0.10)',
 			};

@@ -1,17 +1,17 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
+import { formatDate } from '../../utils/date';
 
-export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
-	const { handleClose, justification, handleJustification, disabledButton } =
+export default function ApproveModal({ data, onClose }) {
+	const { handleClose, justification, handleJustification, onApprove } =
 		useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
 			<div
 				className="modalContentApprove"
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
@@ -38,15 +38,14 @@ export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
 									className="displayDescription"
 									readOnly
 									value={
-										data.dsDescricao &&
-										data.dsDescricao !== ""
-											? data.dsDescricao
-											: "Sem descrição"
+										data.dsMotivo && data.dsMotivo !== ''
+											? data.dsMotivo
+											: 'Sem descrição'
 									}
 								>
-									{data.dsDescricao && data.dsDescricao !== ""
-										? data.dsDescricao
-										: "Sem descrição"}
+									{data.dsMotivo && data.dsMotivo !== ''
+										? data.dsMotivo
+										: 'Sem descrição'}
 								</textarea>
 							</div>
 						</div>
@@ -59,16 +58,13 @@ export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
 							<div
 								className="descriptionContent"
 								style={{
-									border:
-										justification && justification === ""
-											? "1px solid red"
-											: "1px solid #e4e4e7",
+									border: '1px solid #e4e4e7',
 								}}
 							>
 								<textarea
 									className="displayDescription"
 									value={justification}
-									onChange={(e) => handleJustification(e)}
+									onChange={e => handleJustification(e)}
 									required
 								>
 									{justification}
@@ -80,15 +76,13 @@ export default function ApproveModal({ data, onClose, onConfirm, onReject }) {
 				<div className="modalFooter">
 					<button
 						className="footerButtons rejectButton"
-						onClick={onReject}
-						disabled={justification === "" || disabledButton}
+						onClick={() => onApprove('rejeitado')}
 					>
 						Rejeitar
 					</button>
 					<button
 						className="footerButtons approveBurron"
-						onClick={onConfirm}
-						disabled={justification === "" || disabledButton}
+						onClick={() => onApprove('pendente')}
 					>
 						Aprovar
 					</button>

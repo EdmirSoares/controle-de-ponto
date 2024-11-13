@@ -1,39 +1,37 @@
-import { useEffect, useState } from "react";
-import { getUserDataLocalStorage } from "../../utils/user";
-import { toast } from "sonner";
+import { useEffect, useState } from 'react';
+import { getUserDataLocalStorage } from '../../utils/user';
+import { toast } from 'sonner';
 
-export default function useApp(onClose, initialData) {
+export default function useApp(onClose, data) {
 	const [user, setUser] = useState({});
-	const [date, setDate] = useState("");
-	const [time, setTime] = useState("");
+	const [date, setDate] = useState('');
+	const [time, setTime] = useState('');
 	const [isDateTimeEmpty, setIsDateTimeEmpty] = useState(false);
 	const [dataEdit, setDataEdit] = useState({});
 
 	function convertToDateTimeLocalFormat(dateString) {
-		return dateString ? dateString.slice(0, 16) : "";
+		return dateString ? dateString.slice(0, 16) : '';
 	}
 
 	const handleClose = () => {
 		onClose();
 	};
 
-	const handlerChangeDate = (e) => {
+	const handlerChangeDate = e => {
 		setDate(e.target.value);
 	};
 
-	const handlerChangeTime = (e) => {
+	const handlerChangeTime = e => {
 		setTime(e.target.value);
 	};
 
 	const handleConfirm = () => {
 		const dateTime = `${date}T${time}`;
 		const formData = {
-			nmFuncionario: user.name,
-			dsEmail: user.email,
-			dtPonto: new Date(dateTime).toISOString(),
+			dataHora: new Date(dateTime).toISOString(),
 		};
 
-		if (!dateTime && !dataEdit.dtPonto) {
+		if (!dateTime && !dataEdit.dataHora) {
 			setIsDateTimeEmpty(true);
 			return;
 		}
@@ -52,19 +50,19 @@ export default function useApp(onClose, initialData) {
 	}, []);
 
 	useEffect(() => {
-		setDataEdit(initialData);
-	}, [initialData]);
+		setDataEdit(data);
+	}, [data]);
 
 	useEffect(() => {
-		if (dataEdit.dtPonto) {
-			const [datePart, timePart] = dataEdit.dtPonto.split("T");
+		if (dataEdit.dataHora) {
+			const [datePart, timePart] = dataEdit.dataHora.split(' ');
 			setDate(datePart);
-			setTime(timePart.slice(0, 5)); // Remove os segundos
+			setTime(timePart.slice(0, 5));
 		}
-	}, [dataEdit.dtPonto]);
+	}, [dataEdit.dataHora]);
 
 	useEffect(() => {
-		if (date !== "" && time !== "") {
+		if (date !== '' && time !== '') {
 			setIsDateTimeEmpty(false);
 		}
 	}, [date, time]);

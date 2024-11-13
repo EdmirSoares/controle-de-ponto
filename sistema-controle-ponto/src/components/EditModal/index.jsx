@@ -1,6 +1,6 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
 
 export default function EditModal({ onClose, data }) {
 	const {
@@ -18,7 +18,7 @@ export default function EditModal({ onClose, data }) {
 		<div className="modalContainer" onClick={handleClose}>
 			<div
 				className="modalContentEdit"
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
@@ -40,8 +40,8 @@ export default function EditModal({ onClose, data }) {
 									style={{
 										border:
 											isDateTimeEmpty &&
-											dataEdit.dtPonto &&
-											"1px solid red",
+											dataEdit.dataHora &&
+											'1px solid red',
 									}}
 								>
 									<input
@@ -50,29 +50,21 @@ export default function EditModal({ onClose, data }) {
 										className="displayText"
 										value={date}
 										style={{
-											backgroundColor: "transparent",
+											backgroundColor: 'transparent',
 										}}
-										onChange={(e) => handlerChangeDate(e)}
+										onChange={e => handlerChangeDate(e)}
 									/>
 								</div>
-								<div
-									className="displayContentEdit"
-									style={{
-										border:
-											isDateTimeEmpty &&
-											dataEdit.dtPonto &&
-											"1px solid red",
-									}}
-								>
+								<div className="displayContentEdit">
 									<input
 										aria-label="Time"
 										type="time"
 										className="displayText"
 										value={time}
 										style={{
-											backgroundColor: "transparent",
+											backgroundColor: 'transparent',
 										}}
-										onChange={(e) => handlerChangeTime(e)}
+										onChange={e => handlerChangeTime(e)}
 									/>
 								</div>
 							</div>
@@ -88,13 +80,12 @@ export default function EditModal({ onClose, data }) {
 									className="displayDescription"
 									readOnly
 									value={
-										data.dsDescricao &&
-										data.dsDescricao !== ""
-											? data.dsDescricao
-											: "Sem descrição"
+										data.dsMotivo && data.dsMotivo !== ''
+											? data.dsMotivo
+											: 'Sem descrição'
 									}
 								>
-									{data.dsDescricao}
+									{data.dsMotivo}
 								</textarea>
 							</div>
 						</div>
@@ -110,9 +101,9 @@ export default function EditModal({ onClose, data }) {
 									readOnly
 									value={
 										data.dsJustificativa &&
-										data.dsJustificativa !== ""
+										data.dsJustificativa !== ''
 											? data.dsJustificativa
-											: "Sem descrição"
+											: 'Sem descrição'
 									}
 								>
 									{data.dsJustificativa}

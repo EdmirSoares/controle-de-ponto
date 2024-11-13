@@ -38,8 +38,8 @@ export default function Table({ data, onEdit, onView }) {
 									<StatusTable statusText={item.status} />
 								</td>
 								<td className="btnActionsColumn">
-									{item.tpStatus &&
-									item.tpStatus === 'Disponível' ? (
+									{item.status &&
+									item.status === 'pendente' ? (
 										<Edit3
 											size={18}
 											className="btnEdit"

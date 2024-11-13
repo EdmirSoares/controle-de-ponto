@@ -80,3 +80,11 @@ export const requestEdit = async data => {
 	);
 	return response.data;
 };
+
+export const approveRequest = async data => {
+	const response = await axios.put(
+		'http://localhost:3000/pontos/status/update',
+		data,
+	);
+	return response.data;
+};
