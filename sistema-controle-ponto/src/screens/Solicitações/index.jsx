@@ -40,7 +40,7 @@ export default function Solicitacoes() {
 					</div>
 				) : (
 					dataRequests &&
-					dataRequests.length === 0 && (
+					dataRequests.length > 0 && (
 						<TableRequest
 							data={dataRequests}
 							onView={handlerModalApprove}
