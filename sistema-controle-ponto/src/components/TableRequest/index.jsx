@@ -1,4 +1,4 @@
-import { Eye } from 'react-feather';
+import { Eye, AlertTriangle } from 'react-feather';
 import StatusTable from '../StatusTable';
 import './styles.css';
 import { formatDate } from '../../utils/date';
@@ -51,9 +51,15 @@ export default function TableRequest({ data, onView }) {
 						</tbody>
 					</table>
 				) : (
-					<Fragment>
-						<p>Nenhuma solicitação encontrada</p>
-					</Fragment>
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
 				)}
 			</div>
 		</div>

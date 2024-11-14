@@ -7,56 +7,68 @@ export default function Table({ data, onEdit, onView }) {
 	return (
 		<div className="table-container">
 			<div className="table-wrapper">
-				<table>
-					<thead className="tableHeader">
-						<tr className="columnsHeader">
-							<th className="labelHeaderNoSize">ID</th>
-							<th className="labelHeader">Colaborador</th>
-							<th className="labelHeader">Data e Hora</th>
-							<th className="labelHeader">Tipo</th>
-							<th className="labelHeader">Status</th>
-							<th className="labelHeaderNoSize btnActionsColumn">
-								Ações
-							</th>
-						</tr>
-					</thead>
-					<tbody className="tableBody">
-						{data.map((item, index) => (
-							<tr
-								key={`${item.idPonto}-${index}`}
-								className="columnsBody"
-							>
-								<td>#{item.idPonto}</td>
-								<td className="textsColumn">
-									{item.nmFuncionario}
-								</td>
-								<td className="textsColumn">
-									{formatDate(item.dataHora)}
-								</td>
-								<td className="textsColumn">{item.tipo}</td>
-								<td className="textsColumn">
-									<StatusTable statusText={item.status} />
-								</td>
-								<td className="btnActionsColumn">
-									{item.status &&
-									item.status === 'pendente' ? (
-										<Edit3
-											size={18}
-											className="btnEdit"
-											onClick={() => onEdit(item)}
-										/>
-									) : (
-										<Eye
-											size={18}
-											className="btnEdit"
-											onClick={() => onView(item)}
-										/>
-									)}
-								</td>
+				{data && data.length > 0 ? (
+					<table>
+						<thead className="tableHeader">
+							<tr className="columnsHeader">
+								<th className="labelHeaderNoSize">ID</th>
+								<th className="labelHeader">Colaborador</th>
+								<th className="labelHeader">Data e Hora</th>
+								<th className="labelHeader">Tipo</th>
+								<th className="labelHeader">Status</th>
+								<th className="labelHeaderNoSize btnActionsColumn">
+									Ações
+								</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody className="tableBody">
+							{data.map((item, index) => (
+								<tr
+									key={`${item.idPonto}-${index}`}
+									className="columnsBody"
+								>
+									<td>#{item.idPonto}</td>
+									<td className="textsColumn">
+										{item.nmFuncionario}
+									</td>
+									<td className="textsColumn">
+										{formatDate(item.dataHora)}
+									</td>
+									<td className="textsColumn">{item.tipo}</td>
+									<td className="textsColumn">
+										<StatusTable statusText={item.status} />
+									</td>
+									<td className="btnActionsColumn">
+										{item.status &&
+										item.status === 'pendente' ? (
+											<Edit3
+												size={18}
+												className="btnEdit"
+												onClick={() => onEdit(item)}
+											/>
+										) : (
+											<Eye
+												size={18}
+												className="btnEdit"
+												onClick={() => onView(item)}
+											/>
+										)}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				) : (
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);

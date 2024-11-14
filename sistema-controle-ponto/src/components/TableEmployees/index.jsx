@@ -1,7 +1,13 @@
-import { AlertOctagon, CheckCircle, Edit3, UserX } from "react-feather";
-import "./styles.css";
-import { Fragment } from "react";
-import StatusBoolean from "../StatusBoolean";
+import {
+	AlertOctagon,
+	CheckCircle,
+	Edit3,
+	UserX,
+	AlertTriangle,
+} from 'react-feather';
+import './styles.css';
+import { Fragment } from 'react';
+import StatusBoolean from '../StatusBoolean';
 
 export default function TableEmployees({
 	data,
@@ -81,9 +87,15 @@ export default function TableEmployees({
 						</tbody>
 					</table>
 				) : (
-					<Fragment>
-						<p>Nenhuma solicitação encontrada</p>
-					</Fragment>
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
 				)}
 			</div>
 		</div>

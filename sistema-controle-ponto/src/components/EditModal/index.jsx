@@ -59,6 +59,7 @@ export default function EditModal({ onClose, data }) {
 									<input
 										aria-label="Time"
 										type="time"
+										step="1"
 										className="displayText"
 										value={time}
 										style={{

@@ -1,15 +1,16 @@
-import "./styles.css";
-import SideMenu from "../../components/SideMenu";
-import RightAreaScreen from "../../components/RightAreaScreen";
-import Table from "../../components/Table";
-import useApp from "./useApp";
-import RegisterModal from "../../components/RegisterModal";
-import ViewModal from "../../components/ViewModal";
-import RequestModal from "../../components/RequestModal";
-import EditModal from "../../components/EditModal";
+import './styles.css';
+import SideMenu from '../../components/SideMenu';
+import RightAreaScreen from '../../components/RightAreaScreen';
+import Table from '../../components/Table';
+import useApp from './useApp';
+import RegisterModal from '../../components/RegisterModal';
+import ViewModal from '../../components/ViewModal';
+import RequestModal from '../../components/RequestModal';
+import EditModal from '../../components/EditModal';
 
 export default function Registros() {
 	const {
+		loading,
 		getDataRegisters,
 		dataRegisters,
 		handleOpenEdit,
@@ -39,14 +40,24 @@ export default function Registros() {
 				onClickPositiveButton={handleOpenRegister}
 				onClickReload={() => getDataRegisters()}
 			>
-				{dataRegisters && dataRegisters.length === 0 ? (
-					<p>Nenhum registro encontrado</p>
+				{loading ? (
+					<div className="loadingContainer">
+						<div className="loading">
+							<p>Carregando</p>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
 				) : (
-					<Table
-						data={dataRegisters}
-						onEdit={handleOpenEdit}
-						onView={handleOpenView}
-					/>
+					dataRegisters &&
+					dataRegisters.length > 0 && (
+						<Table
+							data={dataRegisters}
+							onEdit={handleOpenEdit}
+							onView={handleOpenView}
+						/>
+					)
 				)}
 			</RightAreaScreen>
 			{modalRegister && <RegisterModal onClose={handleCloseRegister} />}

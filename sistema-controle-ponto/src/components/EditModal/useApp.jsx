@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { getUserDataLocalStorage } from '../../utils/user';
+import { updateRegistro } from '../../utils/api';
 import { toast } from 'sonner';
 
 export default function useApp(onClose, data) {
-	const [user, setUser] = useState({});
 	const [date, setDate] = useState('');
 	const [time, setTime] = useState('');
 	const [isDateTimeEmpty, setIsDateTimeEmpty] = useState(false);
@@ -25,10 +25,11 @@ export default function useApp(onClose, data) {
 		setTime(e.target.value);
 	};
 
-	const handleConfirm = () => {
-		const dateTime = `${date}T${time}`;
+	const handleConfirm = async () => {
+		const dateTime = `${date} ${time}`;
 		const formData = {
-			dataHora: new Date(dateTime).toISOString(),
+			idPonto: dataEdit.idPonto,
+			dataHora: dateTime,
 		};
 
 		if (!dateTime && !dataEdit.dataHora) {
@@ -37,17 +38,14 @@ export default function useApp(onClose, data) {
 		}
 
 		try {
-			console.log(formData);
+			await updateRegistro(formData);
+
 			handleClose();
 			toast.success(`Ponto editado com sucesso!`);
 		} catch (error) {
 			console.error(error);
 		}
 	};
-
-	useEffect(() => {
-		setUser(getUserDataLocalStorage());
-	}, []);
 
 	useEffect(() => {
 		setDataEdit(data);
@@ -57,7 +55,7 @@ export default function useApp(onClose, data) {
 		if (dataEdit.dataHora) {
 			const [datePart, timePart] = dataEdit.dataHora.split(' ');
 			setDate(datePart);
-			setTime(timePart.slice(0, 5));
+			setTime(timePart.slice(0, 8));
 		}
 	}, [dataEdit.dataHora]);
 

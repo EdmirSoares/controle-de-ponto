@@ -16,12 +16,11 @@ export default function useApp() {
 	const [requestModal, setRequestModal] = useState(false);
 
 	const getDataRegisters = async () => {
+		setLoading(true);
 		try {
 			const response = await getRegistros();
 			setDataRegisters(response.data);
-
 			setLoading(false);
-			toast.success('Registros carregados com sucesso');
 		} catch (error) {
 			console.error(error);
 			toast.error('Erro ao carregar os dados');
@@ -43,6 +42,7 @@ export default function useApp() {
 
 	const handleCloseEdit = () => {
 		setModalEdit(false);
+		getDataRegisters();
 	};
 
 	const handleOpenView = item => {
@@ -69,6 +69,7 @@ export default function useApp() {
 	}, []);
 
 	return {
+		loading,
 		dataRegisters,
 		getDataRegisters,
 		handleOpenEdit,

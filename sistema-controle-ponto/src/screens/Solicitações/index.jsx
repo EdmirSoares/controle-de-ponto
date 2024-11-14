@@ -12,6 +12,7 @@ import ApproveModal from '../../components/ApproveModal';
 
 export default function Solicitacoes() {
 	const {
+		loading,
 		dataRequests,
 		getDataRequests,
 		modalApprove,
@@ -28,10 +29,24 @@ export default function Solicitacoes() {
 				subTitle="Autorize ou rejeite as solicitações feitas!"
 				onClickReload={() => getDataRequests()}
 			>
-				<TableRequest
-					data={dataRequests}
-					onView={handlerModalApprove}
-				/>
+				{loading ? (
+					<div className="loadingContainer">
+						<div className="loading">
+							<p>Carregando</p>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				) : (
+					dataRequests &&
+					dataRequests.length === 0 && (
+						<TableRequest
+							data={dataRequests}
+							onView={handlerModalApprove}
+						/>
+					)
+				)}
 			</RightAreaScreen>
 			{modalApprove && (
 				<ApproveModal

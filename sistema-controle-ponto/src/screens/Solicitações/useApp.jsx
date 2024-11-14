@@ -10,6 +10,7 @@ export default function useApp() {
 	const [approveData, setApproveData] = useState({});
 
 	const getDataRequests = async () => {
+		setLoading(true);
 		try {
 			const formData = {
 				status: 'solicitado',
@@ -37,11 +38,8 @@ export default function useApp() {
 		getDataRequests();
 	}, []);
 
-	useEffect(() => {
-		console.log(dataRequests);
-	}, [dataRequests]);
-
 	return {
+		loading,
 		dataRequests,
 		getDataRequests,
 		modalApprove,

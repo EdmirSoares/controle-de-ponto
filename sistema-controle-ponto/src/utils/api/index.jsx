@@ -88,3 +88,8 @@ export const approveRequest = async data => {
 	);
 	return response.data;
 };
+
+export const updateRegistro = async data => {
+	const response = await axios.put('http://localhost:3000/pontos', data);
+	return response.data;
+};

@@ -1,11 +1,11 @@
-import "./styles.css";
-import SideMenu from "../../components/SideMenu";
-import RightAreaScreen from "../../components/RightAreaScreen";
-import TableEmployees from "../../components/TableEmployees";
-import useApp from "./useApp";
-import RegisterEmployeeModal from "../../components/RegisterEmployeeModal";
-import { useEffect } from "react";
-import GenericConfirmModal from "../../components/GenericConfirmModal";
+import './styles.css';
+import SideMenu from '../../components/SideMenu';
+import RightAreaScreen from '../../components/RightAreaScreen';
+import TableEmployees from '../../components/TableEmployees';
+import useApp from './useApp';
+import RegisterEmployeeModal from '../../components/RegisterEmployeeModal';
+import { useEffect } from 'react';
+import GenericConfirmModal from '../../components/GenericConfirmModal';
 
 export default function Colaboradores() {
 	const {
@@ -33,20 +33,30 @@ export default function Colaboradores() {
 			<RightAreaScreen
 				title="Gerenciar Colaboradores"
 				subTitle="Atualize as informações dos colaboradores em um só lugar"
-				positiveButtonLabel={"Cadastrar"}
+				positiveButtonLabel={'Cadastrar'}
 				onClickPositiveButton={handleOpenRegisterEmployee}
 				onClickReload={getDataEmployees}
 			>
 				{loading ? (
-					<p>Carregando...</p>
+					<div className="loadingContainer">
+						<div className="loading">
+							<p>Carregando</p>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
 				) : (
-					<TableEmployees
-						data={dataEmployees}
-						onEdit={(item) => handleOpenRegisterEmployee(item)}
-						onActive={(item) => handleOpenStatusEmployee(item)}
-						onInactive={(item) => handleOpenStatusEmployee(item)}
-						onDelete={(item) => handleOpenDeleteEmployee(item)}
-					/>
+					dataEmployees &&
+					dataEmployees.length > 0 && (
+						<TableEmployees
+							data={dataEmployees}
+							onEdit={item => handleOpenRegisterEmployee(item)}
+							onActive={item => handleOpenStatusEmployee(item)}
+							onInactive={item => handleOpenStatusEmployee(item)}
+							onDelete={item => handleOpenDeleteEmployee(item)}
+						/>
+					)
 				)}
 			</RightAreaScreen>
 			{modalRegisterEmployee && (
@@ -68,8 +78,8 @@ export default function Colaboradores() {
 				<GenericConfirmModal
 					title={
 						statusEmployee === 0
-							? "Desativar Colaborador"
-							: "Ativar Colaborador"
+							? 'Desativar Colaborador'
+							: 'Ativar Colaborador'
 					}
 					subtitle="Alterar Status do colaborador"
 					mainText="Deseja Ativar este Colaborador?"
