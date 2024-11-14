@@ -41,12 +41,7 @@ export default function useApp(onClose, data) {
 		}
 	};
 
-	const handleClose = () => {
-		onClose();
-	};
-
 	return {
-		handleClose,
 		justification,
 		handleJustification,
 		onApprove,

@@ -7,7 +7,7 @@ export default function Table({ data, onEdit, onView }) {
 	return (
 		<div className="table-container">
 			<div className="table-wrapper">
-				{data && data.length > 0 ? (
+				{data && data.length > 0 && (
 					<table>
 						<thead className="tableHeader">
 							<tr className="columnsHeader">
@@ -58,16 +58,6 @@ export default function Table({ data, onEdit, onView }) {
 							))}
 						</tbody>
 					</table>
-				) : (
-					<div className="loadingContainer">
-						<div className="loading">
-							<AlertTriangle
-								size={32}
-								color={'var(--text-color-gray)'}
-							/>
-							<p>Nenhum dado encontrado!</p>
-						</div>
-					</div>
 				)}
 			</div>
 		</div>

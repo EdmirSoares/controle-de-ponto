@@ -33,6 +33,7 @@ export default function useApp() {
 
 	const handleCloseRegister = () => {
 		setModalRegister(false);
+		getDataRegisters();
 	};
 
 	const handleOpenEdit = item => {
@@ -52,6 +53,7 @@ export default function useApp() {
 
 	const handleCloseView = () => {
 		setModalView(false);
+		getDataRegisters();
 	};
 
 	const handlerRequestEdit = () => {
@@ -62,6 +64,7 @@ export default function useApp() {
 
 	const handlerCloseRequest = () => {
 		setRequestModal(false);
+		getDataRegisters();
 	};
 
 	useEffect(() => {

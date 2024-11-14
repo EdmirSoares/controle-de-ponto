@@ -9,6 +9,7 @@ import RequestModal from '../../components/RequestModal';
 import EditModal from '../../components/EditModal';
 import TableRequest from '../../components/TableRequest';
 import ApproveModal from '../../components/ApproveModal';
+import { AlertTriangle } from 'react-feather';
 
 export default function Solicitacoes() {
 	const {
@@ -38,14 +39,21 @@ export default function Solicitacoes() {
 							<span></span>
 						</div>
 					</div>
+				) : dataRequests && dataRequests.length > 0 ? (
+					<TableRequest
+						data={dataRequests}
+						onView={handlerModalApprove}
+					/>
 				) : (
-					dataRequests &&
-					dataRequests.length > 0 && (
-						<TableRequest
-							data={dataRequests}
-							onView={handlerModalApprove}
-						/>
-					)
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
 				)}
 			</RightAreaScreen>
 			{modalApprove && (

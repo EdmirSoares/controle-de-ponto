@@ -32,6 +32,7 @@ export default function useApp() {
 
 	const handleCloseModalApprove = () => {
 		setModalApprove(false);
+		getDataRequests();
 	};
 
 	useEffect(() => {

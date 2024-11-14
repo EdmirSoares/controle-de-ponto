@@ -7,6 +7,7 @@ import RegisterModal from '../../components/RegisterModal';
 import ViewModal from '../../components/ViewModal';
 import RequestModal from '../../components/RequestModal';
 import EditModal from '../../components/EditModal';
+import { AlertTriangle } from 'react-feather';
 
 export default function Registros() {
 	const {
@@ -49,15 +50,22 @@ export default function Registros() {
 							<span></span>
 						</div>
 					</div>
+				) : dataRegisters && dataRegisters.length > 0 ? (
+					<Table
+						data={dataRegisters}
+						onEdit={handleOpenEdit}
+						onView={handleOpenView}
+					/>
 				) : (
-					dataRegisters &&
-					dataRegisters.length > 0 && (
-						<Table
-							data={dataRegisters}
-							onEdit={handleOpenEdit}
-							onView={handleOpenView}
-						/>
-					)
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
 				)}
 			</RightAreaScreen>
 			{modalRegister && <RegisterModal onClose={handleCloseRegister} />}

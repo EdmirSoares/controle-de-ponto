@@ -4,11 +4,13 @@ import './styles.css';
 import { formatDate } from '../../utils/date';
 
 export default function ApproveModal({ data, onClose }) {
-	const { handleClose, justification, handleJustification, onApprove } =
-		useApp(onClose, data);
+	const { justification, handleJustification, onApprove } = useApp(
+		onClose,
+		data,
+	);
 
 	return (
-		<div className="modalContainer" onClick={handleClose}>
+		<div className="modalContainer" onClick={onClose}>
 			<div
 				className="modalContentApprove"
 				onClick={e => e.stopPropagation()}

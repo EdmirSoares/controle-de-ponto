@@ -6,6 +6,7 @@ import useApp from './useApp';
 import RegisterEmployeeModal from '../../components/RegisterEmployeeModal';
 import { useEffect } from 'react';
 import GenericConfirmModal from '../../components/GenericConfirmModal';
+import { AlertTriangle } from 'react-feather';
 
 export default function Colaboradores() {
 	const {
@@ -46,17 +47,24 @@ export default function Colaboradores() {
 							<span></span>
 						</div>
 					</div>
+				) : dataEmployees && dataEmployees.length > 0 ? (
+					<TableEmployees
+						data={dataEmployees}
+						onEdit={item => handleOpenRegisterEmployee(item)}
+						onActive={item => handleOpenStatusEmployee(item)}
+						onInactive={item => handleOpenStatusEmployee(item)}
+						onDelete={item => handleOpenDeleteEmployee(item)}
+					/>
 				) : (
-					dataEmployees &&
-					dataEmployees.length > 0 && (
-						<TableEmployees
-							data={dataEmployees}
-							onEdit={item => handleOpenRegisterEmployee(item)}
-							onActive={item => handleOpenStatusEmployee(item)}
-							onInactive={item => handleOpenStatusEmployee(item)}
-							onDelete={item => handleOpenDeleteEmployee(item)}
-						/>
-					)
+					<div className="loadingContainer">
+						<div className="loading">
+							<AlertTriangle
+								size={32}
+								color={'var(--text-color-gray)'}
+							/>
+							<p>Nenhum dado encontrado!</p>
+						</div>
+					</div>
 				)}
 			</RightAreaScreen>
 			{modalRegisterEmployee && (
