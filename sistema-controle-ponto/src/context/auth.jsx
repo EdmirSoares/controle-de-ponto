@@ -1,5 +1,7 @@
-import { createContext, useEffect, useState } from "react";
-import { postLogin } from "../utils/api/index";
+import { createContext, useEffect, useState } from 'react';
+import { postLogin } from '../utils/api/index';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 const AuthContext = createContext();
 
@@ -10,9 +12,11 @@ function AuthProvider({ children }) {
 	const [isLogged, setIsLogged] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
 
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		try {
-			const user = JSON.parse(localStorage.getItem("@user_data"));
+			const user = JSON.parse(localStorage.getItem('@user_data'));
 			if (user) {
 				setUser(user);
 				setIsLogged(true);
@@ -37,7 +41,13 @@ function AuthProvider({ children }) {
 			setUser(response);
 			setIsAdmin(response.isAdmin !== 0);
 			window.location.reload();
+			navigate('/home');
 		} catch (error) {
+			const errorMessage =
+				error.response?.data?.message ||
+				'Erro ao cadastrar funcionário';
+			toast.error(errorMessage);
+			console.error(error);
 			setIsLogged(false);
 			setLoadingSign(false);
 		} finally {
@@ -48,11 +58,10 @@ function AuthProvider({ children }) {
 	const signOut = async () => {
 		setLoadingSign(true);
 		try {
-			//await postLogout();
 			setUser(null);
 			setIsLogged(false);
-			localStorage.removeItem("@user_data");
-			window.location.reload();
+			localStorage.removeItem('@user_data');
+			navigate('/login');
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -60,9 +69,9 @@ function AuthProvider({ children }) {
 		}
 	};
 
-	const setLocalStorage = async (dataUser) => {
+	const setLocalStorage = async dataUser => {
 		try {
-			localStorage.setItem("@user_data", JSON.stringify(dataUser));
+			localStorage.setItem('@user_data', JSON.stringify(dataUser));
 		} catch (error) {
 			console.log(error);
 		}

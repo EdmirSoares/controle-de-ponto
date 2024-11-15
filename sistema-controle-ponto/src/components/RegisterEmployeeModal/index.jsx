@@ -1,8 +1,8 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
-import { formatDate } from "../../utils/date";
-import { useEffect } from "react";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
+import { formatDate } from '../../utils/date';
+import { useEffect } from 'react';
 
 export default function RegisterEmployeeModal({ data, onClose }) {
 	const {
@@ -17,11 +17,15 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 		<div className="modalContainer" onClick={handleClose}>
 			<div
 				className="modalContentRequest"
-				onClick={(e) => e.stopPropagation()}
+				onClick={e => e.stopPropagation()}
 			>
 				<div className="modalHeaderView">
 					<div>
-						<h2 className="modalTitle">Cadastrar Colaborador</h2>
+						<h2 className="modalTitle">
+							{!data
+								? 'Cadastrar Colaborador'
+								: 'Editar Colaborador'}
+						</h2>
 						<p className="modalSubTitle">
 							Insira as informações para realizar o cadastro
 						</p>
@@ -38,17 +42,17 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 							<div
 								className="descriptionContentInput"
 								style={{
-									border: "1px solid #e4e4e7",
+									border: '1px solid #e4e4e7',
 								}}
 							>
 								<input
 									area-label="Nome"
-									type={"text"}
+									type={'text'}
 									className="displayDescription"
 									placeholder="Nome"
 									name="nmFuncionario"
 									value={registerData.nmFuncionario}
-									onChange={(e) => handlerChangeInputs(e)}
+									onChange={e => handlerChangeInputs(e)}
 									maxLength={100}
 								/>
 							</div>
@@ -56,24 +60,24 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 						<div className="descriptionContainer">
 							<div className="labelTitle">
 								<p className="infoText">
-									Email{" "}
+									Email{' '}
 									<span className="requiredSpan">*</span>
 								</p>
 							</div>
 							<div
 								className="descriptionContentInput"
 								style={{
-									border: "1px solid #e4e4e7",
+									border: '1px solid #e4e4e7',
 								}}
 							>
 								<input
 									area-label="Nome"
-									type={"text"}
+									type={'text'}
 									className="displayDescription"
 									placeholder="Email"
 									name="dsEmail"
 									value={registerData.dsEmail}
-									onChange={(e) => handlerChangeInputs(e)}
+									onChange={e => handlerChangeInputs(e)}
 									maxLength={100}
 								/>
 							</div>
@@ -81,20 +85,20 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 						<div className="descriptionContainer">
 							<div className="labelTitle">
 								<p className="infoText">
-									Função{" "}
+									Função{' '}
 									<span className="requiredSpan">*</span>
 								</p>
 							</div>
 							<div
 								className="descriptionContentInput"
 								style={{
-									border: "1px solid #e4e4e7",
+									border: '1px solid #e4e4e7',
 								}}
 							>
 								<select
 									name="dsFuncao"
 									value={registerData.dsFuncao}
-									onChange={(e) => handlerChangeInputs(e)}
+									onChange={e => handlerChangeInputs(e)}
 									maxLength={100}
 								>
 									<option value="Selecione">Selecione</option>
@@ -113,9 +117,80 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 									name="isAdmin"
 									value={registerData.isAdmin}
 									checked={registerData.isAdmin}
-									onChange={(e) => handlerChangeInputs(e)}
+									onChange={e => handlerChangeInputs(e)}
 								/>
 								<p className="infoText">Supervisor?</p>
+							</div>
+						</div>
+						<div className="displayContainerEdit">
+							<div className="descriptionContainer">
+								<div className="labelTitle">
+									<p className="infoText">
+										{`Horário de Entrada `}
+										<span className="requiredSpan">*</span>
+									</p>
+								</div>
+								<div className="displayContentEdit">
+									<input
+										aria-label="Time"
+										type="time"
+										step="1"
+										className="displayText"
+										name="horaSaida"
+										value={registerData.horaSaida}
+										style={{
+											backgroundColor: 'transparent',
+										}}
+										onChange={e => handlerChangeInputs(e)}
+									/>
+								</div>
+							</div>
+							<div className="descriptionContainer">
+								<div className="labelTitle">
+									<p className="infoText">
+										{`Horário de Saída `}
+										<span className="requiredSpan">*</span>
+									</p>
+								</div>
+								<div className="displayContentEdit">
+									<input
+										aria-label="Time"
+										type="time"
+										step="1"
+										className="displayText"
+										name="horaEntrada"
+										value={registerData.horaEntrada}
+										style={{
+											backgroundColor: 'transparent',
+										}}
+										onChange={e => handlerChangeInputs(e)}
+									/>
+								</div>
+							</div>
+						</div>
+						<div className="descriptionContainer">
+							<div className="labelTitle">
+								<p className="infoText">
+									{`Máximo de atraso (minutos)`}
+									<span className="requiredSpan">*</span>
+								</p>
+							</div>
+							<div
+								className="descriptionContentInput"
+								style={{
+									border: '1px solid #e4e4e7',
+								}}
+							>
+								<input
+									area-label="Nome"
+									type={'number'}
+									className="displayDescription"
+									placeholder="Máximo de atraso (minutos)"
+									name="maxAtrasoMinutos"
+									value={registerData.maxAtrasoMinutos}
+									onChange={e => handlerChangeInputs(e)}
+									maxLength={2}
+								/>
 							</div>
 						</div>
 					</div>
@@ -128,7 +203,7 @@ export default function RegisterEmployeeModal({ data, onClose }) {
 						Cancelar
 					</button>
 					<button className="footerButtons" onClick={handleConfirm}>
-						Solicitar
+						Confirmar
 					</button>
 				</div>
 			</div>

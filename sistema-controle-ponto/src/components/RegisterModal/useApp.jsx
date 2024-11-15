@@ -4,7 +4,7 @@ import { toast } from 'sonner';
 import { getUserDataLocalStorage } from '../../utils/user';
 import { createRegistro } from '../../utils/api';
 
-export default function useApp(onClose) {
+export default function useApp(onClose, data) {
 	const [user, setUser] = useState({});
 	const [dateTime, setDateTime] = useState('');
 
@@ -26,17 +26,17 @@ export default function useApp(onClose) {
 		const formData = {
 			idFuncionario: user.idFuncionario,
 			dataHora: unFormatDate(dateTime),
-			dsMotivo: '',
-			tipo: 'entrada',
+			dsMotivo: data.dsMotivo,
+			tipo: data.tipo,
 		};
 
 		try {
-			await createRegistro(formData);
-			console.log(formData);
+			const response = await createRegistro(formData);
 			handleClose();
 			toast.success(`Ponto registrado com sucesso!`);
 		} catch (error) {
 			console.error(error);
+			toast.error(response.data.message);
 		}
 	};
 

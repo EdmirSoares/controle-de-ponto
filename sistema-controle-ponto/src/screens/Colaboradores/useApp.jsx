@@ -1,11 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import {
 	deleteEmployee,
 	getEmployees,
 	updateStatusEmployee,
-} from "../../utils/api";
+} from '../../utils/api';
 
 export default function useApp() {
 	const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ export default function useApp() {
 			setLoading(false);
 		} catch (error) {
 			console.error(error);
-			toast.error("Erro ao carregar os dados");
+			toast.error('Erro ao carregar os dados');
 		}
 	};
 
@@ -39,7 +39,7 @@ export default function useApp() {
 			handleCloseDeleteEmployee();
 		} catch (error) {
 			const errorMessage =
-				error.response?.data?.error || "Erro ao desligar o colaborador";
+				error.response?.data?.error || 'Erro ao desligar o colaborador';
 			toast.error(errorMessage);
 			console.error(error);
 		}
@@ -50,21 +50,26 @@ export default function useApp() {
 			console.log(statusEmployee);
 			const response = await updateStatusEmployee(
 				statusEmployee.idFuncionario,
-				statusEmployee.flAtivo === 0 ? 1 : 0
+				statusEmployee.flAtivo === 0 ? 1 : 0,
 			);
 			toast.success(response.message);
 			handleCloseStatusEmployee();
 		} catch (error) {
 			const errorMessage =
-				error.response?.data?.error || "Erro ao alterar status";
+				error.response?.data?.error || 'Erro ao alterar status';
 			toast.error(errorMessage);
 			console.error(error);
 		}
 	};
 
-	const handleOpenRegisterEmployee = (item) => {
+	const handleOpenRegisterEmployee = item => {
 		setModalRegisterEmployee(true);
-		setDataRegisterEmployee(item);
+		setDataRegisterEmployee(
+			dataEmployees.filter(
+				dataEmployees =>
+					dataEmployees.idFuncionario === item.idFuncionario,
+			)[0],
+		);
 	};
 
 	const handleCloseRegisterEmployee = () => {
@@ -72,7 +77,7 @@ export default function useApp() {
 		getDataEmployees();
 	};
 
-	const handleOpenDeleteEmployee = (item) => {
+	const handleOpenDeleteEmployee = item => {
 		setModalDeleteEmployee(true);
 		setIdEmployee(item.idFuncionario);
 	};
@@ -82,7 +87,7 @@ export default function useApp() {
 		getDataEmployees();
 	};
 
-	const handleOpenStatusEmployee = (item) => {
+	const handleOpenStatusEmployee = item => {
 		setModalStatusEmployee(true);
 		setStatusEmployee(item);
 	};
@@ -97,8 +102,8 @@ export default function useApp() {
 	}, []);
 
 	useEffect(() => {
-		console.log(statusEmployee);
-	}, [statusEmployee]);
+		console.log(dataRegisterEmployee);
+	}, [dataRegisterEmployee]);
 
 	return {
 		loading,

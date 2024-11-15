@@ -24,7 +24,7 @@ export default function EditModal({ onClose, data }) {
 					<div>
 						<h2 className="modalTitle">Editar Registro</h2>
 						<p className="modalSubTitle">
-							Atualize sua jornada de trabalho
+							Atualize o ponto regsitrado
 						</p>
 					</div>
 				</div>

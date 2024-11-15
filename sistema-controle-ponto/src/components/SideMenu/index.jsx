@@ -1,9 +1,9 @@
-import "./styles.css";
-import { useContext } from "react";
-import { AuthContext } from "../../context/auth";
-import { LogOut } from "react-feather";
-import useApp from "./useApp";
-import User_b from "../../assets/images/User_b.png";
+import './styles.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth';
+import { LogOut } from 'react-feather';
+import useApp from './useApp';
+import User_b from '../../assets/images/User_b.png';
 
 export default function SideMenu() {
 	const { handleNavigation, signOut, infoUser } = useApp();
@@ -20,15 +20,15 @@ export default function SideMenu() {
 			<div className="navigationContainer">
 				<div
 					className="menuItem"
-					onClick={() => handleNavigation("/home")}
+					onClick={() => handleNavigation('/home')}
 				>
 					<p className="textNavigation" data-screen="/home">
-						Home
+						News
 					</p>
 				</div>
 				<div
 					className="menuItem"
-					onClick={() => handleNavigation("/registros")}
+					onClick={() => handleNavigation('/registros')}
 				>
 					<p className="textNavigation" data-screen="/registros">
 						Registros
@@ -36,7 +36,7 @@ export default function SideMenu() {
 				</div>
 				<div
 					className="menuItem"
-					onClick={() => handleNavigation("/solicitacoes")}
+					onClick={() => handleNavigation('/solicitacoes')}
 				>
 					<p className="textNavigation" data-screen="/solicitacoes">
 						Solicitações
@@ -45,7 +45,7 @@ export default function SideMenu() {
 				{isAdmin && (
 					<div
 						className="menuItem"
-						onClick={() => handleNavigation("/colaboradores")}
+						onClick={() => handleNavigation('/colaboradores')}
 					>
 						<p
 							className="textNavigation"
@@ -60,7 +60,7 @@ export default function SideMenu() {
 				<p className="textNavigation" onClick={signOut}>
 					Sair
 				</p>
-				<LogOut onClick={signOut} style={{ cursor: "pointer" }} />
+				<LogOut onClick={signOut} style={{ cursor: 'pointer' }} />
 			</div>
 		</div>
 	);

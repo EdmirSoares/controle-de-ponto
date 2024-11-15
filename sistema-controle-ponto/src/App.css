@@ -203,6 +203,17 @@ input[type='checkbox']:checked {
 	background-color: var(--yellow-theme-color) !important;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type='number'] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
 .requiredSpan {
 	color: var(--red-theme-color);
 	font-weight: 700;

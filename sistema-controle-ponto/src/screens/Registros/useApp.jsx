@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
-import { getRegistros } from '../../utils/api';
+import { getRegistros, getJornada } from '../../utils/api';
+import { getUserDataLocalStorage } from '../../utils/user';
 
 export default function useApp() {
 	const [loading, setLoading] = useState(false);
+	const [user, setUser] = useState({});
+	const [typeCommentary, setTypeCommentary] = useState({
+		dsMotivo: '',
+		tipo: 'entrada',
+	});
 	const [dataRegisters, setDataRegisters] = useState([{}]);
 	const [dataRequest, setDataRequest] = useState([{}]);
 	const [dataView, setDataView] = useState([{}]);
@@ -27,6 +33,49 @@ export default function useApp() {
 		}
 	};
 
+	const validateWorkPeriod = async idFuncionario => {
+		const entryTime = new Date();
+		const response = await getJornada(idFuncionario);
+
+		const [hours, minutes, seconds] = response?.data[0]?.horaEntrada
+			.split(':')
+			.map(Number);
+
+		const [endHours, endMinutes, endSeconds] = response?.data[0]?.horaSaida
+			.split(':')
+			.map(Number);
+
+		const maxAtrasoMinutos = response?.data[0]?.maxAtrasoMinutos;
+
+		const workStartTime = new Date();
+		const workEndTime = new Date();
+
+		workStartTime.setHours(hours, minutes + maxAtrasoMinutos, seconds, 0);
+		workEndTime.setHours(endHours, endMinutes, endSeconds, 0);
+
+		const diffStart = Math.abs(entryTime - workStartTime);
+		const diffEnd = Math.abs(entryTime - workEndTime);
+
+		if (entryTime >= workStartTime || entryTime >= workEndTime) {
+			toast.success('O ponto será registrado fora do horário!');
+			setTypeCommentary(prev => ({
+				...prev,
+				dsMotivo: 'Fora do horário, solicitar edição',
+			}));
+		}
+
+		if (diffStart < diffEnd) {
+			setTypeCommentary(prev => ({
+				...prev,
+				tipo: 'saida',
+			}));
+		} else {
+			setTypeCommentary(prev => ({
+				...prev,
+				tipo: 'entrada',
+			}));
+		}
+	};
 	const handleOpenRegister = () => {
 		setModalRegister(true);
 	};
@@ -69,7 +118,18 @@ export default function useApp() {
 
 	useEffect(() => {
 		getDataRegisters();
+		setUser(getUserDataLocalStorage());
 	}, []);
+
+	useEffect(() => {
+		if (user?.idFuncionario) {
+			validateWorkPeriod(user.idFuncionario);
+		}
+	}, [user]);
+
+	useEffect(() => {
+		console.log(typeCommentary);
+	}, [typeCommentary]);
 
 	return {
 		loading,
@@ -90,5 +150,6 @@ export default function useApp() {
 		modalRegister,
 		requestModal,
 		dataEdit,
+		typeCommentary,
 	};
 }

@@ -93,3 +93,10 @@ export const updateRegistro = async data => {
 	const response = await axios.put('http://localhost:3000/pontos', data);
 	return response.data;
 };
+
+export const getJornada = async idFuncionario => {
+	const response = await axios.get(
+		`http://localhost:3000/jornada/${idFuncionario}`,
+	);
+	return response.data;
+};

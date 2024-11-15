@@ -29,6 +29,7 @@ export default function Registros() {
 		modalRegister,
 		requestModal,
 		dataEdit,
+		typeCommentary,
 	} = useApp();
 
 	return (
@@ -68,7 +69,14 @@ export default function Registros() {
 					</div>
 				)}
 			</RightAreaScreen>
-			{modalRegister && <RegisterModal onClose={handleCloseRegister} />}
+
+			{modalRegister && (
+				<RegisterModal
+					onClose={handleCloseRegister}
+					data={typeCommentary}
+				/>
+			)}
+
 			{modalView && (
 				<ViewModal
 					data={dataView}
@@ -76,12 +84,14 @@ export default function Registros() {
 					onRequest={handlerRequestEdit}
 				/>
 			)}
+
 			{requestModal && (
 				<RequestModal
 					data={dataRequest}
 					onClose={handlerCloseRequest}
 				/>
 			)}
+
 			{modalEdit && (
 				<EditModal onClose={handleCloseEdit} data={dataEdit} />
 			)}

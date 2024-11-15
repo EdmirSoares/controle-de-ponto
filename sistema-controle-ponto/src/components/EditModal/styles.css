@@ -142,14 +142,14 @@
 	justify-content: flex-start;
 	align-items: flex-start;
 	display: inline-flex;
-	gap: 6px;
+	gap: 12px;
 }
 
 .displayContentEdit {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	background: "inherit";
+	background: 'inherit';
 	border: 1px solid #e4e4e7;
 	border-radius: 6px;
 	width: 100%;

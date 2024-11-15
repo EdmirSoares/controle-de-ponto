@@ -1,16 +1,16 @@
-import React from "react";
-import useApp from "./useApp";
-import "./styles.css";
+import React from 'react';
+import useApp from './useApp';
+import './styles.css';
 
-export default function RegisterModal({ onClose }) {
-	const { dateTime, handleConfirm, handleClose } = useApp(onClose);
+export default function RegisterModal({ onClose, data }) {
+	const { dateTime, handleConfirm, handleClose } = useApp(onClose, data);
 
 	return (
 		<div className="modalContainer" onClick={handleClose}>
 			{dateTime && (
 				<div
 					className="modalContent"
-					onClick={(e) => e.stopPropagation()}
+					onClick={e => e.stopPropagation()}
 				>
 					<div className="modalHeader">
 						<h2 className="modalTitle">Registrar Ponto</h2>
