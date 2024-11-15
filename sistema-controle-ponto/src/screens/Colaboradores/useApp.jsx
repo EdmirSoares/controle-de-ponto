@@ -5,6 +5,7 @@ import {
 	deleteEmployee,
 	getEmployees,
 	updateStatusEmployee,
+	deleteWorkPeriod,
 } from '../../utils/api';
 
 export default function useApp() {
@@ -17,6 +18,7 @@ export default function useApp() {
 	const [modalRegisterEmployee, setModalRegisterEmployee] = useState(false);
 	const [modalDeleteEmployee, setModalDeleteEmployee] = useState(false);
 	const [modalStatusEmployee, setModalStatusEmployee] = useState(false);
+	const [modalDeleteWorkPeriod, setModalDeleteWorkPeriod] = useState(false);
 
 	const getDataEmployees = async () => {
 		setLoading(true);
@@ -37,6 +39,7 @@ export default function useApp() {
 
 			toast.success(response.message);
 			handleCloseDeleteEmployee();
+			handleOpenDeleteWorkPeriod(idEmployee);
 		} catch (error) {
 			const errorMessage =
 				error.response?.data?.error || 'Erro ao desligar o colaborador';
@@ -47,7 +50,6 @@ export default function useApp() {
 
 	const handleUpdateStatusEmployee = async () => {
 		try {
-			console.log(statusEmployee);
 			const response = await updateStatusEmployee(
 				statusEmployee.idFuncionario,
 				statusEmployee.flAtivo === 0 ? 1 : 0,
@@ -72,6 +74,21 @@ export default function useApp() {
 		);
 	};
 
+	const deleteWorkPeriodEmployee = async () => {
+		try {
+			const response = await deleteWorkPeriod({
+				idFuncionario: idEmployee,
+			});
+			toast.success(response.message);
+			handleCloseDeleteWorkPeriod();
+		} catch (error) {
+			const errorMessage =
+				error.response?.data?.error || 'Erro ao excluir os registros';
+			toast.error(errorMessage);
+			console.error(error);
+		}
+	};
+
 	const handleCloseRegisterEmployee = () => {
 		setModalRegisterEmployee(false);
 		getDataEmployees();
@@ -84,7 +101,6 @@ export default function useApp() {
 
 	const handleCloseDeleteEmployee = () => {
 		setModalDeleteEmployee(false);
-		getDataEmployees();
 	};
 
 	const handleOpenStatusEmployee = item => {
@@ -97,13 +113,18 @@ export default function useApp() {
 		getDataEmployees();
 	};
 
+	const handleOpenDeleteWorkPeriod = () => {
+		setModalDeleteWorkPeriod(true);
+	};
+
+	const handleCloseDeleteWorkPeriod = () => {
+		getDataEmployees();
+		setModalDeleteWorkPeriod(false);
+	};
+
 	useEffect(() => {
 		getDataEmployees();
 	}, []);
-
-	useEffect(() => {
-		console.log(dataRegisterEmployee);
-	}, [dataRegisterEmployee]);
 
 	return {
 		loading,
@@ -122,5 +143,9 @@ export default function useApp() {
 		handleOpenStatusEmployee,
 		handleCloseStatusEmployee,
 		handleUpdateStatusEmployee,
+		handleOpenDeleteWorkPeriod,
+		handleCloseDeleteWorkPeriod,
+		modalDeleteWorkPeriod,
+		deleteWorkPeriodEmployee,
 	};
 }

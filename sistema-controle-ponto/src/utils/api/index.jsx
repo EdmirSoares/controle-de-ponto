@@ -100,3 +100,8 @@ export const getJornada = async idFuncionario => {
 	);
 	return response.data;
 };
+
+export const deleteWorkPeriod = async data => {
+	const response = await axios.delete('http://localhost:3000/pontos', data);
+	return response.data;
+};

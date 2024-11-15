@@ -7,6 +7,7 @@ import RegisterModal from '../../components/RegisterModal';
 import ViewModal from '../../components/ViewModal';
 import RequestModal from '../../components/RequestModal';
 import EditModal from '../../components/EditModal';
+import GenericConfirmModal from '../../components/GenericConfirmModal';
 import { AlertTriangle } from 'react-feather';
 
 export default function Registros() {

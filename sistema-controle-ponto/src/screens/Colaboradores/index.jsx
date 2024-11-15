@@ -26,6 +26,10 @@ export default function Colaboradores() {
 		handleOpenStatusEmployee,
 		handleCloseStatusEmployee,
 		handleUpdateStatusEmployee,
+		handleOpenDeleteWorkPeriod,
+		handleCloseDeleteWorkPeriod,
+		modalDeleteWorkPeriod,
+		deleteWorkPeriodEmployee,
 	} = useApp();
 
 	return (
@@ -93,6 +97,18 @@ export default function Colaboradores() {
 					mainText="Deseja Ativar este Colaborador?"
 					onClose={handleCloseStatusEmployee}
 					onConfirm={handleUpdateStatusEmployee}
+				/>
+			)}
+
+			{modalDeleteWorkPeriod && (
+				<GenericConfirmModal
+					title={'Excluir registro de pontos'}
+					subtitle={'Exclua o registro de pontos do colaborador'}
+					mainText={
+						'Deseja excluir os registro de pontos do colaborador desligado?'
+					}
+					onClose={handleCloseDeleteWorkPeriod}
+					onConfirm={deleteWorkPeriodEmployee}
 				/>
 			)}
 		</div>

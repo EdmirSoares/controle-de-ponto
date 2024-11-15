@@ -23,7 +23,6 @@ export default function useApp(onClose, data) {
 			...prevData,
 			[name]: type === 'checkbox' ? checked : value,
 		}));
-		console.log(registerData);
 	};
 
 	const handleConfirm = async () => {

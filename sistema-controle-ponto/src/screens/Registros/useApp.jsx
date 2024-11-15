@@ -127,10 +127,6 @@ export default function useApp() {
 		}
 	}, [user]);
 
-	useEffect(() => {
-		console.log(typeCommentary);
-	}, [typeCommentary]);
-
 	return {
 		loading,
 		dataRegisters,
