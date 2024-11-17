@@ -77,6 +77,7 @@ export default function Colaboradores() {
 					onClose={handleCloseRegisterEmployee}
 				/>
 			)}
+
 			{modalDeleteEmployee && (
 				<GenericConfirmModal
 					title="Desligar Colaborador"
@@ -86,15 +87,12 @@ export default function Colaboradores() {
 					onConfirm={handleDeleteEmployee}
 				/>
 			)}
+
 			{modalStatusEmployee && (
 				<GenericConfirmModal
-					title={
-						statusEmployee === 0
-							? 'Desativar Colaborador'
-							: 'Ativar Colaborador'
-					}
+					title={'Alterar Status'}
 					subtitle="Alterar Status do colaborador"
-					mainText="Deseja Ativar este Colaborador?"
+					mainText="Deseja Alterar o Status deste Colaborador?"
 					onClose={handleCloseStatusEmployee}
 					onConfirm={handleUpdateStatusEmployee}
 				/>
