@@ -32,7 +32,7 @@
 	width: 80%;
 }
 
-.labelnput {
+.labelInput {
 	align-self: flex-start;
 }
 .inputContainer {
@@ -95,6 +95,22 @@ h1 {
 p {
 	color: var(--text-color-gray);
 	font-weight: 700;
+}
+
+.rightText {
+	color: var(--text-color-white);
+	font-size: 2rem !important;
+	font-weight: 700;
+	word-wrap: 'break-word';
+	text-transform: none;
+	color: var(--text-color-dark) !important;
+}
+
+.leftTextSubtitle {
+	color: var(--text-color-white);
+	font-size: 1rem !important;
+	font-weight: 700;
+	word-wrap: 'break-word';
 }
 
 @media screen and (max-width: 1366px) {
