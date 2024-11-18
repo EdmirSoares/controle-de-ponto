@@ -26,7 +26,8 @@ Este sistema trata-se de uma aplicação web desenvolvida para gerenciar o regis
 #### Pré-requisitos
   - Node.js (versão 14 ou superior)
   - npm (versão 6 ou superior) ou yarn (versão 1 ou superior)
-  - 
+  - Instalar o projeto [Controle de Ponto API](https://github.com/EdmirSoares/controle-de-ponto-api)
+    
 #### Passo a Passo
 1. Clone o repositório e entre na pasta do projeto
  ```sh
