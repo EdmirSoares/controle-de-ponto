@@ -1,4 +1,5 @@
 # Sistema de Controle de Ponto<picture> <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/23f0/512.webp" type="image/webp"> <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/23f0/512.gif" alt="⏰" width="32" height="32"></picture>
+<img alt="Capa do projeto" src="https://i.ibb.co/dBLv6gF/Group-1.jpg">
 
 ## Tecnologias Utilizadas
 <img alt="React" src="https://img.shields.io/badge/-React-05122A?style=flat&amp;logo=react">&nbsp;
@@ -8,6 +9,7 @@
 <img alt="Sonner" src="https://img.shields.io/badge/-Sonner-05122A?style=flat">&nbsp;
 <img alt="ESLint" src="https://img.shields.io/badge/-ESLint-05122A?style=flat&amp;logo=eslint">&nbsp;
 <img alt="CSS Modules" src="https://img.shields.io/badge/-CSS Modules-05122A?style=flat&amp;logo=css3">&nbsp;
+
 
 ## Descrição 📃
 Este sistema trata-se de uma aplicação web desenvolvida para gerenciar o registro de colaboradores, e os respectivos pontos de trabalho dos colaboradores de uma empresa. A aplicação permite que os colaboradores registrem seus pontos, visualizem seus registros e façam solicitações de edição. Os administradores podem gerenciar colaboradores, aprovar ou rejeitar solicitações de edição e visualizar todos os registros.
